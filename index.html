@@ -1,453 +1,494 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerald Mahapranaja Pillian | Data Analytics & Tech</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerald Mahapranaja Pillian</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Floating cats background -->
-    <div class="cats-container" id="catsContainer"></div>
+<div id="cats-layer"></div>
 
-    <!-- Dark Mode Toggle -->
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
+<button id="theme-btn" aria-label="Toggle theme">
+  <span class="icon-sun">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </span>
+  <span class="icon-moon">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </span>
+</button>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">GM<span class="accent">P</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#research">Research</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="nav-menu-btn" id="menuBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
     </button>
+  </div>
+  <div class="nav-drawer" id="navDrawer">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#research">Research</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-content">
-            <a href="#home" class="nav-logo">GP</a>
-            <div class="nav-links">
-                <a href="#about" class="nav-link">About</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#blog" class="nav-link">Blog</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
+<section id="home" class="hero">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="status-dot"></span>
+        <span>Available from Jun 2026</span>
+      </div>
+      <h1>Gerald<br><em>Mahapranaja</em><br>Pillian</h1>
+      <p class="hero-role">Information Systems &amp; Data Science</p>
+      <p class="hero-desc">ITS Indonesia &nbsp;&middot;&nbsp; NTUST Taiwan exchange &nbsp;&middot;&nbsp; Open to international relocation</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Get in Touch</a>
+        <a href="CV_2025.pdf" download class="btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download CV
+        </a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stats-block">
+        <div class="hs" data-target="3.51" data-decimal="2">
+          <span class="hs-num">0</span>
+          <span class="hs-label">GPA / 4.00</span>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">
-                    Hi, I'm <span class="highlight">Gerald</span>
-                </h1>
-                <p class="hero-subtitle">
-                    Data Analytics & Information Systems Student
-                </p>
-                <p class="hero-description">
-                    Building intelligent solutions through data engineering, machine learning, and thoughtful design. 
-                    Information Systems and Computer Science student of ITS Indonesia and NTUST Taiwan.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Get in Touch</a>
-                    <a href="#" id="downloadCV" class="btn btn-secondary">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                        Download CV
-                    </a>
-                    <a href="https://github.com/gegeisgege" target="_blank" class="btn btn-secondary">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                        GitHub
-                    </a>
-                </div>
-            </div>
+        <div class="hs" data-target="100" data-suffix="K+">
+          <span class="hs-num">0</span>
+          <span class="hs-label">ML Samples</span>
         </div>
-        <div class="scroll-indicator">
-            <div class="mouse">
-                <div class="wheel"></div>
-            </div>
+        <div class="hs" data-target="300" data-suffix="+">
+          <span class="hs-num">0</span>
+          <span class="hs-label">Software & Data Projects</span>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>
-                        I'm a results-driven Information Systems student at <strong>Institut Teknologi Sepuluh Nopember (ITS)</strong> 
-                        with a passion for data analytics, machine learning, and creating user-centered solutions.
-                    </p>
-                    <p>
-                        Completed an exchange at <strong>National Taiwan University of Science and Technology (NTUST)</strong>, 
-                        where I worked on exciting projects involving fuzzy logic control systems, neural networks, 
-                        and air quality forecasting.
-                    </p>
-                    <p>
-                        I've published research on mobile app security, designed AI-powered applications, and led teams 
-                        in organizing tech events with 300+ participants.
-                    </p>
-                </div>
-                <div class="about-stats">
-                    <div class="stat-card">
-                        <div class="stat-number">3.51</div>
-                        <div class="stat-label">GPA</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">100K+</div>
-                        <div class="stat-label">ML Samples Trained</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">300+</div>
-                        <div class="stat-label">Event Participants</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">1</div>
-                        <div class="stat-label">Published Paper</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="skills-section">
-                <h3 class="subsection-title">Technical Skills</h3>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h4>Programming</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">SQL</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">Java</span>
-                            <span class="skill-tag">PHP/Laravel</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Data & ML</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">R Studio</span>
-                            <span class="skill-tag">Machine Learning</span>
-                            <span class="skill-tag">SAP ERP & BI</span>
-                            <span class="skill-tag">Neural Networks</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Tools & Design</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">UI/UX Design</span>
-                            <span class="skill-tag">REST APIs</span>
-                            <span class="skill-tag">Google Cloud</span>
-                            <span class="skill-tag">Video Editing</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="hs" data-target="2">
+          <span class="hs-num">0</span>
+          <span class="hs-label">Publications</span>
         </div>
-    </section>
+      </div>
+      <div class="hero-tags">
+        <span>Data Engineering</span>
+        <span>Machine Learning</span>
+        <span>UI/UX Design</span>
+        <span>Computer Vision</span>
+        <span>Fuzzy Logic</span>
+        <span>SAP BI</span>
+        <span>Clustering</span>
+        <span>Research</span>
+      </div>
+    </div>
+  </div>
+    <div class="scroll-cue">
+    <div class="sc-line"></div>
+    <div class="sc-letters" id="scLetters">
+        <span class="sc-letter">s</span>
+        <span class="sc-letter">c</span>
+        <span class="sc-letter">r</span>
+        <span class="sc-letter">o</span>
+        <span class="sc-letter">l</span>
+        <span class="sc-letter">l</span>
+    </div>
+    </div>
+</section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="section experience">
-        <div class="container">
-            <h2 class="section-title">Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Aug 2025 – Jan 2026</div>
-                        <h3>Student</h3>
-                        <h4>National Taiwan University of Science and Technology</h4>
-                        <p>Computer Science Department • Taipei, Taiwan</p>
-                        <ul>
-                            <li>Developed Fuzzy Logic Control for Dynamic Target Tracking systems</li>
-                            <li>Built Particle Swarm Optimized Neural Networks for Air Quality Forecasting (100K+ samples)</li>
-                            <li>Designed Email Communication Simulation System</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">May 2024 – Jun 2024</div>
-                        <h3>UI/UX Designer & Developer</h3>
-                        <h4>Data Engineering and Business Intelligence Lab, ITS</h4>
-                        <p>Surabaya, Indonesia</p>
-                        <ul>
-                            <li>Designed end-to-end UI/UX for CLASTIC, an AI-powered plastic waste sorting mobile app</li>
-                            <li>Conducted field testing in Sumberbening Village</li>
-                            <li>Implemented cohesive web and graphic design across digital platforms</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Apr 2023 – Aug 2025</div>
-                        <h3>Expert Staff – External Department</h3>
-                        <h4>Information Systems Expo (ISE!), ITS</h4>
-                        <p>Surabaya, Indonesia</p>
-                        <ul>
-                            <li>Progressed from General Staff to Expert Staff, managing 3-member team</li>
-                            <li>Served as MC for UX Academy and Data Software Academy</li>
-                            <li>Achieved 300+ participants across organized programs</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Sep 2023 – Dec 2023</div>
-                        <h3>Assistant Lecturer</h3>
-                        <h4>Introduction to Information Systems, ITS</h4>
-                        <p>Surabaya, Indonesia</p>
-                        <ul>
-                            <li>Designed assignments and projects for undergraduate students</li>
-                            <li>Provided grading, academic support, and course coordination</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+<section id="about" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-index">01</span>
+      <h2>About</h2>
+    </div>
+    <div class="about-layout">
+      <div class="about-text">
+        <p class="about-lead">I'm a results-driven Information Systems graduate of <strong>Institut Teknologi Sepuluh Nopember (ITS)</strong>, with a cross-disciplinary background spanning data analytics, machine learning, UI/UX design, and intelligent systems.</p>
+        <p>Completed a competitive exchange at <strong>National Taiwan University of Science and Technology (NTUST)</strong> where I built neural networks for urban air quality forecasting, designed fuzzy logic control systems, and simulated network communication protocols.</p>
+        <p>My undergraduate thesis applied Ward's linkage hierarchical clustering to medical student performance data, identifying three distinct learning profiles across 98 students and four assessment modalities.</p>
+        <p>I'm seeking a Master's programme in Data Science or Information Systems to deepen expertise in applied machine learning and human-centred computing.</p>
+        <div class="about-links">
+          <a href="https://github.com/gegeisgege" target="_blank" rel="noopener" class="pill-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+          </a>
+          <a href="https://linkedin.com/in/geraldmpillian" target="_blank" rel="noopener" class="pill-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            LinkedIn
+          </a>
         </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="section projects">
-        <div class="container">
-            <h2 class="section-title">Notable Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card interactive-card">
-                    <div class="project-header">
-                        <h3>Air Quality Forecasting Neural Network</h3>
-                        <span class="project-tag">Machine Learning</span>
-                    </div>
-                    <p class="project-description">
-                        Built and trained neural networks on 100,000+ samples using Particle Swarm Optimization 
-                        for hyperparameter tuning to predict real-time urban air quality in Taipei.
-                    </p>
-                    <div class="project-tech">
-                        <span>Python</span>
-                        <span>Neural Networks</span>
-                        <span>PSO</span>
-                    </div>
-                    <div class="project-stats">
-                        <div class="stat-item">
-                            <span class="stat-value">100K+</span>
-                            <span class="stat-name">Samples</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-value">95%</span>
-                            <span class="stat-name">Accuracy</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card interactive-card">
-                    <div class="project-header">
-                        <h3>Fuzzy Logic Target Tracking System</h3>
-                        <span class="project-tag">Control Systems</span>
-                    </div>
-                    <p class="project-description">
-                        Designed a fuzzy logic controller for real-time dual-axis target tracking in autonomous 
-                        aiming systems, applying advanced control theory and computational logic.
-                    </p>
-                    <div class="project-tech">
-                        <span>Fuzzy Logic</span>
-                        <span>Control Theory</span>
-                        <span>Real-time Systems</span>
-                    </div>
-                </div>
-
-                <div class="project-card interactive-card">
-                    <div class="project-header">
-                        <h3>CLASTIC – AI Waste Sorting App</h3>
-                        <span class="project-tag">UI/UX + ML</span>
-                    </div>
-                    <p class="project-description">
-                        Led UI/UX design for an AI-powered plastic waste sorting mobile application deployed 
-                        in rural Indonesia, integrating ML-based plastic classification.
-                    </p>
-                    <div class="project-tech">
-                        <span>UI/UX</span>
-                        <span>Mobile Dev</span>
-                        <span>AI/ML</span>
-                    </div>
-                </div>
-
-                <div class="project-card interactive-card">
-                    <div class="project-header">
-                        <h3>Email Communication Simulation</h3>
-                        <span class="project-tag">System Design</span>
-                    </div>
-                    <p class="project-description">
-                        Engineered a comprehensive simulation of email communication protocols, focusing on 
-                        system architecture and server-client flow modeling.
-                    </p>
-                    <div class="project-tech">
-                        <span>System Architecture</span>
-                        <span>Protocols</span>
-                        <span>Simulation</span>
-                    </div>
-                </div>
-
-                <div class="project-card featured interactive-card">
-                    <div class="project-header">
-                        <h3>Published Research Paper</h3>
-                        <span class="project-tag">Research</span>
-                    </div>
-                    <p class="project-description">
-                        "Understanding User Perceptions of Camera and Microphone Access in Mobile Applications" 
-                        – Investigating user trust patterns and security/privacy implications.
-                    </p>
-                    <div class="project-tech">
-                        <span>Security Research</span>
-                        <span>Privacy</span>
-                        <span>User Study</span>
-                    </div>
-                    <a href="https://www.researchgate.net/" target="_blank" class="project-link">
-                        View on ResearchGate →
-                    </a>
-                </div>
+      </div>
+      <div class="skills-radar-wrap">
+        <div class="radar-title">Skill Profile</div>
+        <canvas id="radarChart" width="320" height="320"></canvas>
+        <div class="skills-tabs">
+          <div class="tab-bar">
+            <button class="tab-btn active" data-tab="prog">Programming</button>
+            <button class="tab-btn" data-tab="ml">ML &amp; Data</button>
+            <button class="tab-btn" data-tab="tools">Tools</button>
+            <button class="tab-btn" data-tab="lang">Languages</button>
+          </div>
+          <div class="tab-content active" id="tab-prog">
+            <div class="skill-pills">
+              <span>Python</span><span>SQL</span><span>JavaScript</span><span>R</span><span>Java</span><span>PHP / Laravel</span><span>HTML / CSS</span><span>VBA</span>
             </div>
-        </div>
-    </section>
-
-    <!-- Blog Section -->
-    <section id="blog" class="section blog">
-        <div class="container">
-            <h2 class="section-title">Blog & Insights</h2>
-            <p class="blog-intro">Thoughts on data, technology, and learning adventures</p>
-            
-            <div class="blog-grid" id="blogGrid">
-                <!-- Blog posts will be loaded here from CMS -->
-                <div class="blog-loading">
-                    <div class="spinner"></div>
-                    <p>Loading blog posts...</p>
-                </div>
+          </div>
+          <div class="tab-content" id="tab-ml">
+            <div class="skill-pills">
+              <span>scikit-learn</span><span>TensorFlow</span><span>Neural Networks</span><span>YOLOv11n</span><span>PSO</span><span>Hierarchical Clustering</span><span>SAP ERP &amp; BI</span><span>Power BI</span>
             </div>
-
-            <!-- Blog CMS Admin Panel (hidden by default) -->
-            <div class="cms-admin" id="cmsAdmin" style="display: none;">
-                <h3>Blog Admin Panel</h3>
-                <button class="btn btn-primary" id="toggleCMS">Toggle CMS Editor</button>
-                
-                <div class="cms-editor" id="cmsEditor" style="display: none;">
-                    <form id="blogForm">
-                        <input type="hidden" id="postId" name="postId">
-                        <div class="form-group">
-                            <label>Title</label>
-                            <input type="text" id="postTitle" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Category</label>
-                            <select id="postCategory" required>
-                                <option value="Data Science">Data Science</option>
-                                <option value="Machine Learning">Machine Learning</option>
-                                <option value="UI/UX">UI/UX</option>
-                                <option value="Personal">Personal</option>
-                                <option value="Tutorial">Tutorial</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Excerpt</label>
-                            <textarea id="postExcerpt" rows="3" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Content</label>
-                            <textarea id="postContent" rows="10" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Tags (comma separated)</label>
-                            <input type="text" id="postTags" placeholder="python, machine learning, tutorial">
-                        </div>
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary">Save Post</button>
-                            <button type="button" class="btn btn-secondary" id="cancelEdit">Cancel</button>
-                        </div>
-                    </form>
-                </div>
+          </div>
+          <div class="tab-content" id="tab-tools">
+            <div class="skill-pills">
+              <span>Figma</span><span>MATLAB</span><span>CoppeliaSim</span><span>Supabase</span><span>Git / GitHub</span><span>Google Cloud APIs</span><span>REST APIs</span><span>LaTeX</span>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section contact">
-        <div class="container">
-            <h2 class="section-title">Let's Connect</h2>
-            <p class="contact-intro">
-                I'm always open to new opportunities, collaborations, or just a friendly chat about tech and data!
-            </p>
-            <div class="contact-grid">
-                <a href="mailto:gerald.pranaja@gmail.com" class="contact-card">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                        <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
-                    <h3>Email</h3>
-                    <p>gerald.pranaja@gmail.com</p>
-                </a>
-
-                <a href="https://github.com/gegeisgege" target="_blank" class="contact-card">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                    <h3>GitHub</h3>
-                    <p>@gegeisgege</p>
-                </a>
-
-                <a href="https://linkedin.com/in/geraldmpillian" target="_blank" class="contact-card">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                    </svg>
-                    <h3>LinkedIn</h3>
-                    <p>Gerald Mahapranaja Pillian</p>
-                </a>
-
-                <div class="contact-card location">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                        <circle cx="12" cy="10" r="3"></circle>
-                    </svg>
-                    <h3>Location</h3>
-                    <p>Surabaya, Indonesia</p>
-                    <p class="location-sub">Currently in Taipei, Taiwan</p>
-                </div>
+          </div>
+          <div class="tab-content" id="tab-lang">
+            <div class="skill-pills">
+              <span>Indonesian C2</span><span>English C1</span><span>Javanese B1</span><span>Mandarin A2</span><span>Arabic A2</span><span>French A1</span><span>German A1</span>
             </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Gerald Mahapranaja Pillian. Built with curiosity (and cats 🐱).</p>
-            <p class="footer-hint">Psst... Click on the floating cats for a surprise!</p>
+<section id="experience" class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-index">02</span>
+      <h2>Experience</h2>
+    </div>
+    <div class="exp-tabs">
+      <div class="exp-tab-bar">
+        <button class="exp-tab active" data-exp="ntust">NTUST</button>
+        <button class="exp-tab" data-exp="ise">ISE!</button>
+        <button class="exp-tab" data-exp="debi">DEBI Lab</button>
+        <button class="exp-tab" data-exp="lecturer">Lecturer</button>
+        <button class="exp-tab" data-exp="ieee">IEEE</button>
+        <button class="exp-tab" data-exp="geo">Global Office</button>
+      </div>
+      <div class="exp-panels">
+        <div class="exp-panel active" id="exp-ntust">
+          <div class="exp-meta">
+            <span class="exp-date">Aug 2025 — Jan 2026</span>
+            <span class="exp-loc">Taipei, Taiwan</span>
+          </div>
+          <h3>Exchange Student <span class="exp-at">@ National Taiwan University of Science and Technology</span></h3>
+          <p class="exp-dept">Department of Computer Science</p>
+          <ul>
+            <li>Built Particle Swarm Optimised Neural Networks for PM2.5 and AQI forecasting on 100,000+ Taipei urban sensor samples</li>
+            <li>Designed a fuzzy logic controller for real-time dual-axis autonomous target tracking, implemented in CoppeliaSim and MATLAB</li>
+            <li>Engineered an SMTP/IMAP email communication simulation focusing on server-client architecture and protocol flow modelling</li>
+          </ul>
         </div>
-    </footer>
+        <div class="exp-panel" id="exp-ise">
+          <div class="exp-meta">
+            <span class="exp-date">Apr 2023 — Aug 2025</span>
+            <span class="exp-loc">Surabaya, Indonesia</span>
+          </div>
+          <h3>Expert Staff, External Relations <span class="exp-at">@ Information Systems Expo (ISE!), ITS</span></h3>
+          <ul>
+            <li>Progressed from General Staff to Expert Staff; managed and mentored a team of three</li>
+            <li>Served as Master of Ceremonies for UX Academy and Data Software Academy</li>
+            <li>Achieved KPI of 300+ participants across organised programmes</li>
+          </ul>
+        </div>
+        <div class="exp-panel" id="exp-debi">
+          <div class="exp-meta">
+            <span class="exp-date">May 2024 — Jun 2024</span>
+            <span class="exp-loc">Surabaya, Indonesia</span>
+          </div>
+          <h3>UI/UX Designer &amp; Developer <span class="exp-at">@ DEBI Lab, ITS</span></h3>
+          <ul>
+            <li>Designed end-to-end UI/UX for CLASTIC, an AI-powered plastic waste sorting mobile application</li>
+            <li>Conducted field usability testing in Sumberbening Village, rural Indonesia</li>
+            <li>Produced complete design system covering UI components, web assets, and graphic design</li>
+          </ul>
+        </div>
+        <div class="exp-panel" id="exp-lecturer">
+          <div class="exp-meta">
+            <span class="exp-date">Sep 2023 — Dec 2024</span>
+            <span class="exp-loc">Surabaya, Indonesia</span>
+          </div>
+          <h3>Assistant Lecturer <span class="exp-at">@ Dept. of Information Systems, ITS</span></h3>
+          <ul>
+            <li>Designed assignments and projects for the Introduction to Information Systems undergraduate cohort</li>
+            <li>Provided academic support, grading, and course coordination</li>
+          </ul>
+        </div>
+        <div class="exp-panel" id="exp-ieee">
+          <div class="exp-meta">
+            <span class="exp-date">Jun 2023 — Feb 2024</span>
+            <span class="exp-loc">Surabaya, Indonesia</span>
+          </div>
+          <h3>Strategy &amp; Development Staff <span class="exp-at">@ IEEE ITS Student Branch</span></h3>
+          <ul>
+            <li>Principal editor for marketing and archival content on the Documentation and Editorial Team</li>
+            <li>Completed 5+ major editorial and documentation projects</li>
+          </ul>
+        </div>
+        <div class="exp-panel" id="exp-geo">
+          <div class="exp-meta">
+            <span class="exp-date">Dec 2023 — Feb 2024</span>
+            <span class="exp-loc">Surabaya, Indonesia</span>
+          </div>
+          <h3>Student Staff Volunteer <span class="exp-at">@ Global Engagement Office, ITS</span></h3>
+          <ul>
+            <li>Liaison for 100+ international students across 10+ major events</li>
+            <li>Roles spanned speaker, MC, logistics coordinator, and campus guide</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-    <!-- PDF Generation Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    
-    <!-- CV Generator -->
-    <script src="cv-generator.js"></script>
-    
-    <!-- Main Script -->
-    <script src="script.js"></script>
+    <div class="edu-block">
+      <div class="section-subheader">Education</div>
+      <div class="edu-cards">
+        <div class="edu-card reveal">
+          <div class="edu-degree">B.Sc. Information Systems (S.Kom.)</div>
+          <div class="edu-school">Institut Teknologi Sepuluh Nopember (ITS)</div>
+          <div class="edu-meta">Aug 2022 — Sep 2026 &nbsp;&middot;&nbsp; Surabaya &nbsp;&middot;&nbsp; GPA 3.57 / 4.00</div>
+          <p class="edu-note">Thesis: Hierarchical Cluster Analysis of Medical Student Performance Across Multiple Assessment Modalities — Ward's linkage k=3, Silhouette 0.3913, CH 61.70</p>
+          <div class="edu-awards">
+            <span>Runner-up FTEIC 2022 Business Plan</span>
+            <span>Semi-Finalist UGM BCC 2023</span>
+            <span>Semi-Finalist Danamon DIBPC 2024</span>
+          </div>
+        </div>
+        <div class="edu-card reveal">
+          <div class="edu-degree">Exchange — Computer Science</div>
+          <div class="edu-school">National Taiwan University of Science and Technology (NTUST)</div>
+          <div class="edu-meta">Aug 2025 — Jan 2026 &nbsp;&middot;&nbsp; Taipei</div>
+          <p class="edu-note">Competitively selected institutional exchange. Projects in machine learning, fuzzy logic control, and network protocol simulation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-index">03</span>
+      <h2>Projects</h2>
+    </div>
+    <div class="projects-grid">
+      <div class="proj-card reveal" data-category="ml">
+        <div class="proj-top">
+          <span class="proj-cat">Machine Learning</span>
+          <span class="proj-year">2025</span>
+        </div>
+        <h3>Air Quality Forecasting Neural Network</h3>
+        <p>PSO-optimised neural network trained on 100,000+ Taipei urban sensor samples for real-time PM2.5 and AQI prediction. Hyperparameter search via Particle Swarm Optimisation.</p>
+        <div class="proj-tech">
+          <code>Python</code><code>TensorFlow</code><code>PSO</code><code>NumPy</code>
+        </div>
+        <div class="proj-stats">
+          <div><span>100K+</span><small>Training Samples</small></div>
+          <div><span>PM2.5</span><small>Target Metric</small></div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" data-category="data">
+        <div class="proj-top">
+            <span class="proj-cat">Data Engineering</span>
+            <span class="proj-year">2025</span>
+        </div>
+        <h3>Dadok — Dataset Doktor</h3>
+        <p>Automated data health diagnostic platform. Upload any CSV, XLSX, or JSON dataset and receive a comprehensive health report, missing-value analysis, type inference, categorical normalisation, and a one-click repaired dataset.</p>
+        <div class="proj-tech">
+            <code>React</code><code>Vite</code><code>TailwindCSS</code><code>FastAPI</code><code>Pandas</code><code>Supabase</code>
+        </div>
+        <div class="proj-stats">
+            <div><span>50MB</span><small>Max Upload</small></div>
+            <div><span>1M</span><small>Row Limit</small></div>
+            <div><span>WIP</span><small>Status</small></div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" data-category="cv">
+        <div class="proj-top">
+          <span class="proj-cat">Computer Vision</span>
+          <span class="proj-year">2025</span>
+        </div>
+        <h3>Drone Pipeline Inspection with YOLOv11n</h3>
+        <p>Cross-departmental research with Marine Engineering, ITS. YOLOv11n + GPS geotagging for real-time corrosion and third-party damage detection on oil, gas, and maritime pipelines.</p>
+        <div class="proj-tech">
+          <code>YOLOv11n</code><code>TensorFlow</code><code>GPS</code><code>Python</code>
+        </div>
+        <div class="proj-stats">
+          <div><span>mAP</span><small>Evaluated</small></div>
+          <div><span>GPS</span><small>Spatial Mapping</small></div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" data-category="control">
+        <div class="proj-top">
+          <span class="proj-cat">Control Systems</span>
+          <span class="proj-year">2025</span>
+        </div>
+        <h3>Fuzzy Logic Dual-Axis Targeting System</h3>
+        <p>Fuzzy logic controller for autonomous real-time dual-axis target tracking. Designed and validated in CoppeliaSim and MATLAB simulation environments.</p>
+        <div class="proj-tech">
+          <code>MATLAB</code><code>CoppeliaSim</code><code>Fuzzy Logic</code>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" data-category="ux">
+        <div class="proj-top">
+          <span class="proj-cat">UI/UX + ML</span>
+          <span class="proj-year">2024</span>
+        </div>
+        <h3>CLASTIC — AI Plastic Waste Sorter</h3>
+        <p>End-to-end UI/UX for an AI-powered plastic waste sorting mobile app deployed in rural Indonesia. ML-based classification integrated with field usability testing in Sumberbening Village.</p>
+        <div class="proj-tech">
+          <code>Figma</code><code>ML Classification</code><code>Mobile</code>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" data-category="systems">
+        <div class="proj-top">
+          <span class="proj-cat">Systems</span>
+          <span class="proj-year">2025</span>
+        </div>
+        <h3>SMTP/IMAP Email Simulation System</h3>
+        <p>Simulation of SMTP/IMAP email communication protocols with focus on server-client architecture, handshake sequencing, and protocol flow modelling.</p>
+        <div class="proj-tech">
+          <code>Network Protocols</code><code>Server-Client</code><code>Simulation</code>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="research" class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-index">04</span>
+      <h2>Research</h2>
+    </div>
+    <div class="research-list">
+      <div class="research-card reveal">
+        <div class="research-meta">
+          <span class="research-venue">Jurnal Teknik ITS</span>
+          <span class="research-year">2025</span>
+        </div>
+        <h3>Hierarchical Cluster Analysis of Medical Student Performance Across Multiple Assessment Modalities</h3>
+        <p class="research-authors">Gerald Mahapranaja Pillian &amp; Ahmad Muklason, S.Kom., M.Sc., Ph.D.</p>
+        <p>Identified three performance clusters — At-Risk (26.5%), Mixed Performance (9.2%), Average (64.3%) — from 98 medical students across written, practical, standardised patient, and problem-based assessments. Validated via one-way ANOVA (p &lt; 0.001), Silhouette, Calinski-Harabasz, and Davies-Bouldin indices.</p>
+        <div class="research-tags">
+          <span>Educational Data Mining</span><span>Hierarchical Clustering</span><span>Ward's Linkage</span><span>Medical Education</span>
+        </div>
+      </div>
+
+      <div class="research-card reveal">
+        <div class="research-meta">
+          <span class="research-venue">ResearchGate</span>
+          <span class="research-year">2024</span>
+        </div>
+        <h3>Understanding User Perceptions of Camera and Microphone Access in Mobile Applications</h3>
+        <p>Investigated user trust patterns and security/privacy implications of application permission systems on mobile platforms.</p>
+        <div class="research-tags">
+          <span>Mobile Security</span><span>Privacy</span><span>User Trust</span><span>HCI</span>
+        </div>
+        <a href="https://www.researchgate.net/profile/Gerald-Pillian" target="_blank" rel="noopener" class="research-link">View on ResearchGate</a>
+      </div>
+    </div>
+
+    <div class="certs-block">
+      <div class="section-subheader">Certifications</div>
+      <div class="certs-row">
+        <div class="cert-card reveal">
+          <div class="cert-name">SAP Certified Application Associate</div>
+          <div class="cert-meta">SAP BusinessObjects BI Platform 4.2 &nbsp;&middot;&nbsp; Jul 2024</div>
+          <p>3-month ERP programme covering SD, MM, and PP modules via SAP University Alliances.</p>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-name">Data Analyst Certification</div>
+          <div class="cert-meta">MySkill Online &nbsp;&middot;&nbsp; Aug — Oct 2023</div>
+          <p>Hands-on training in SQL, Python, and DBMS with a guided capstone data analysis project.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-index">05</span>
+      <h2>Contact</h2>
+    </div>
+    <div class="contact-layout">
+      <div class="contact-text">
+        <p class="contact-lead">Open to research collaborations, Master's programme opportunities, and interesting projects in data science, ML, and intelligent systems.</p>
+        <p>Based in Surabaya, Indonesia. Open to international relocation.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:gerald.pranaja@gmail.com" class="contact-row">
+          <span class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </span>
+          <span class="contact-detail">
+            <span class="contact-label">Email</span>
+            <span class="contact-value">gerald.pranaja@gmail.com</span>
+          </span>
+          <span class="contact-arrow">&#8599;</span>
+        </a>
+        <a href="https://github.com/gegeisgege" target="_blank" rel="noopener" class="contact-row">
+          <span class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </span>
+          <span class="contact-detail">
+            <span class="contact-label">GitHub</span>
+            <span class="contact-value">@gegeisgege</span>
+          </span>
+          <span class="contact-arrow">&#8599;</span>
+        </a>
+        <a href="https://linkedin.com/in/geraldmpillian" target="_blank" rel="noopener" class="contact-row">
+          <span class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </span>
+          <span class="contact-detail">
+            <span class="contact-label">LinkedIn</span>
+            <span class="contact-value">Gerald Mahapranaja Pillian</span>
+          </span>
+          <span class="contact-arrow">&#8599;</span>
+        </a>
+        <div class="contact-row no-link">
+          <span class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <span class="contact-detail">
+            <span class="contact-label">Location</span>
+            <span class="contact-value">Surabaya, Indonesia &mdash; Open to relocation</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="footer">
+  <div class="footer-inner">
+    <span class="footer-name">Gerald Mahapranaja Pillian</span>
+    <span class="footer-copy">&copy; 2026</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>

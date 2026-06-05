@@ -1,481 +1,307 @@
-// ==================== DARK MODE ====================
-const themeToggle = document.getElementById('themeToggle');
+// ==================== THEME ====================
 const html = document.documentElement;
+const themeBtn = document.getElementById('theme-btn');
 
-// Check for saved theme preference or default to 'light'
-const currentTheme = localStorage.getItem('theme') || 'light';
-html.setAttribute('data-theme', currentTheme);
+const savedTheme = localStorage.getItem('theme') || 'dark';
+html.setAttribute('data-theme', savedTheme);
 
-themeToggle.addEventListener('click', () => {
-    const theme = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-    html.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+themeBtn?.addEventListener('click', () => {
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
 });
 
-// ==================== BLOG CMS SYSTEM ====================
-class BlogCMS {
-    constructor() {
-        this.posts = this.loadPosts();
-        this.init();
-    }
-
-    loadPosts() {
-        const saved = localStorage.getItem('blogPosts');
-        if (saved) {
-            return JSON.parse(saved);
-        }
-        // Default sample posts
-        return [
-            {
-                id: Date.now() + 1,
-                title: "My Journey with Machine Learning at NTUST",
-                category: "Machine Learning",
-                excerpt: "Reflecting on my experience building neural networks for air quality forecasting in Taipei, working with 100,000+ samples and learning the intricacies of Particle Swarm Optimization.",
-                content: "Full blog post content here...",
-                date: "2026-01-15",
-                readTime: "5 min read",
-                tags: ["Machine Learning", "Neural Networks", "Taiwan", "PSO"]
-            },
-            {
-                id: Date.now() + 2,
-                title: "Designing for Impact: The CLASTIC Experience",
-                category: "UI/UX",
-                excerpt: "How we created an AI-powered waste sorting app for rural Indonesia, balancing user needs with technical constraints and real-world testing in Sumberbening Village.",
-                content: "Full blog post content here...",
-                date: "2024-06-20",
-                readTime: "7 min read",
-                tags: ["UI/UX", "Design Thinking", "Social Impact", "AI"]
-            },
-            {
-                id: Date.now() + 3,
-                title: "Understanding Fuzzy Logic in Control Systems",
-                category: "Tutorial",
-                excerpt: "A beginner-friendly guide to implementing fuzzy logic controllers for dynamic target tracking, with code examples and practical applications in autonomous systems.",
-                content: "Full blog post content here...",
-                date: "2025-12-10",
-                readTime: "10 min read",
-                tags: ["Fuzzy Logic", "Control Systems", "Tutorial", "Python"]
-            }
-        ];
-    }
-
-    savePosts() {
-        localStorage.setItem('blogPosts', JSON.stringify(this.posts));
-    }
-
-    init() {
-        this.renderPosts();
-        this.initCMSAdmin();
-    }
-
-    renderPosts() {
-        const blogGrid = document.getElementById('blogGrid');
-        
-        if (this.posts.length === 0) {
-            blogGrid.innerHTML = `
-                <div class="blog-loading">
-                    <p style="color: var(--text-secondary);">No blog posts yet. Check back soon!</p>
-                </div>
-            `;
-            return;
-        }
-
-        // Sort posts by date (newest first)
-        const sortedPosts = [...this.posts].sort((a, b) => new Date(b.date) - new Date(a.date));
-
-        blogGrid.innerHTML = sortedPosts.map(post => `
-            <div class="blog-card" onclick="blogCMS.viewPost(${post.id})">
-                <div class="blog-card-header">
-                    <span class="blog-category">${post.category}</span>
-                    <h3>${post.title}</h3>
-                    <div class="blog-meta">
-                        <span>${new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-                        <span>•</span>
-                        <span>${post.readTime}</span>
-                    </div>
-                </div>
-                <div class="blog-card-body">
-                    <p class="blog-excerpt">${post.excerpt}</p>
-                    <div class="blog-tags">
-                        ${post.tags.map(tag => `<span class="blog-tag">${tag}</span>`).join('')}
-                    </div>
-                </div>
-            </div>
-        `).join('');
-    }
-
-    initCMSAdmin() {
-        const toggleCMS = document.getElementById('toggleCMS');
-        const cmsEditor = document.getElementById('cmsEditor');
-        const blogForm = document.getElementById('blogForm');
-        const cancelEdit = document.getElementById('cancelEdit');
-
-        // Show CMS admin only when accessing with special key combination (Ctrl+Shift+B)
-        document.addEventListener('keydown', (e) => {
-            if (e.ctrlKey && e.shiftKey && e.key === 'B') {
-                document.getElementById('cmsAdmin').style.display = 'block';
-            }
-        });
-
-        toggleCMS?.addEventListener('click', () => {
-            cmsEditor.style.display = cmsEditor.style.display === 'none' ? 'block' : 'none';
-        });
-
-        blogForm?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            this.savePost();
-        });
-
-        cancelEdit?.addEventListener('click', () => {
-            this.resetForm();
-        });
-    }
-
-    savePost() {
-        const id = document.getElementById('postId').value;
-        const post = {
-            id: id ? parseInt(id) : Date.now(),
-            title: document.getElementById('postTitle').value,
-            category: document.getElementById('postCategory').value,
-            excerpt: document.getElementById('postExcerpt').value,
-            content: document.getElementById('postContent').value,
-            date: new Date().toISOString().split('T')[0],
-            readTime: this.calculateReadTime(document.getElementById('postContent').value),
-            tags: document.getElementById('postTags').value.split(',').map(t => t.trim()).filter(t => t)
-        };
-
-        if (id) {
-            // Update existing
-            const index = this.posts.findIndex(p => p.id === parseInt(id));
-            this.posts[index] = post;
-        } else {
-            // Add new
-            this.posts.push(post);
-        }
-
-        this.savePosts();
-        this.renderPosts();
-        this.resetForm();
-        alert('Blog post saved successfully!');
-    }
-
-    calculateReadTime(content) {
-        const wordsPerMinute = 200;
-        const words = content.trim().split(/\s+/).length;
-        const minutes = Math.ceil(words / wordsPerMinute);
-        return `${minutes} min read`;
-    }
-
-    resetForm() {
-        document.getElementById('blogForm').reset();
-        document.getElementById('postId').value = '';
-        document.getElementById('cmsEditor').style.display = 'none';
-    }
-
-    viewPost(id) {
-        const post = this.posts.find(p => p.id === id);
-        if (!post) return;
-
-        alert(`${post.title}\n\n${post.excerpt}\n\nFull blog post viewing coming soon!`);
-    }
-
-    editPost(id) {
-        const post = this.posts.find(p => p.id === id);
-        if (!post) return;
-
-        document.getElementById('postId').value = post.id;
-        document.getElementById('postTitle').value = post.title;
-        document.getElementById('postCategory').value = post.category;
-        document.getElementById('postExcerpt').value = post.excerpt;
-        document.getElementById('postContent').value = post.content;
-        document.getElementById('postTags').value = post.tags.join(', ');
-        
-        document.getElementById('cmsEditor').style.display = 'block';
-        document.getElementById('cmsEditor').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    deletePost(id) {
-        if (confirm('Are you sure you want to delete this post?')) {
-            this.posts = this.posts.filter(p => p.id !== id);
-            this.savePosts();
-            this.renderPosts();
-        }
-    }
-}
-
-// Initialize Blog CMS
-const blogCMS = new BlogCMS();
-
-// ==================== PDF RESUME DOWNLOAD ====================
-document.getElementById('downloadCV')?.addEventListener('click', async (e) => {
-    e.preventDefault();
-    
-    try {
-        const generator = new CVGenerator();
-        const success = await generator.generatePDF();
-        
-        if (success) {
-            // PDF generated successfully
-            console.log('PDF downloaded successfully!');
-        } else {
-            // Fell back to text version
-            alert('CV downloaded as text file. For a PDF version with full formatting, please ensure you have a modern browser with JavaScript enabled.');
-        }
-    } catch (error) {
-        console.error('Download error:', error);
-        alert('Download failed. Please try again or contact me directly at gerald.pranaja@gmail.com');
-    }
-});
-
-function generateCVData() {
-    // This function is now in cv-generator.js as part of CVGenerator class
-    // Kept here for backwards compatibility if needed
-    return `CV content...`;
-}
-
-// ==================== FLOATING CATS - BIGGER & MORE VISIBLE ====================
-const catsContainer = document.getElementById('catsContainer');
-const catImages = ['akukiku_cat2', 'Bumba_dog1', 'Cebi_cat1', 'koboy_dog2', 'landi_dog3', 'lyra_cat3'];
-const numCats = 15; // Increased from 12
-
-function createFloatingCat() {
-    const cat = document.createElement('img');
-    const randomCat = catImages[Math.floor(Math.random() * catImages.length)];
-    cat.src = `assets/cats/${randomCat}.png`;
-    cat.classList.add('floating-cat');
-    
-    // BIGGER SIZE: 80px to 160px (increased from 60-120px)
-    const size = Math.random() * 80 + 80;
-    cat.style.width = `${size}px`;
-    cat.style.height = 'auto';
-    
-    // Random starting position
-    const startX = Math.random() * window.innerWidth;
-    const startY = Math.random() * window.innerHeight;
-    cat.style.left = `${startX}px`;
-    cat.style.top = `${startY}px`;
-    
-    // Random animation duration between 25-45 seconds (slower for visibility)
-    const duration = Math.random() * 20 + 25;
-    
-    // Random direction
-    const angle = Math.random() * Math.PI * 2;
-    const distance = 250 + Math.random() * 350;
-    const endX = startX + Math.cos(angle) * distance;
-    const endY = startY + Math.sin(angle) * distance;
-    
-    catsContainer.appendChild(cat);
-    
-    // Animate the cat
-    animateCat(cat, startX, startY, endX, endY, duration);
-}
-
-function animateCat(cat, startX, startY, endX, endY, duration) {
-    const startTime = Date.now();
-    
-    function animate() {
-        const elapsed = Date.now() - startTime;
-        const progress = (elapsed % (duration * 1000)) / (duration * 1000);
-        
-        // Smooth easing function
-        const easeInOutSine = (t) => -(Math.cos(Math.PI * t) - 1) / 2;
-        const easedProgress = easeInOutSine(progress);
-        
-        // Calculate position with a gentle floating motion
-        const x = startX + (endX - startX) * easedProgress;
-        const y = startY + (endY - startY) * easedProgress + Math.sin(progress * Math.PI * 4) * 25;
-        
-        cat.style.left = `${x}px`;
-        cat.style.top = `${y}px`;
-        
-        // Gentle rotation
-        cat.style.transform = `rotate(${Math.sin(progress * Math.PI * 2) * 15}deg)`;
-        
-        // Reset when animation completes
-        if (progress >= 0.99) {
-            // Generate new random end position
-            const newAngle = Math.random() * Math.PI * 2;
-            const newDistance = 250 + Math.random() * 350;
-            const newEndX = x + Math.cos(newAngle) * newDistance;
-            const newEndY = y + Math.sin(newAngle) * newDistance;
-            
-            // Wrap around screen edges
-            const wrappedEndX = ((newEndX % window.innerWidth) + window.innerWidth) % window.innerWidth;
-            const wrappedEndY = ((newEndY % window.innerHeight) + window.innerHeight) % window.innerHeight;
-            
-            animateCat(cat, x, y, wrappedEndX, wrappedEndY, duration);
-        } else {
-            requestAnimationFrame(animate);
-        }
-    }
-    
-    animate();
-}
-
-// Initialize cats with stagger
-for (let i = 0; i < numCats; i++) {
-    setTimeout(() => createFloatingCat(), i * 150);
-}
-
-// ==================== NAVBAR SCROLL EFFECT ====================
-const navbar = document.querySelector('.navbar');
-let lastScroll = 0;
+// ==================== NAV SCROLL ====================
+const nav = document.getElementById('nav');
 
 window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-    
-    lastScroll = currentScroll;
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+
+// ==================== MOBILE MENU ====================
+const menuBtn = document.getElementById('menuBtn');
+const navDrawer = document.getElementById('navDrawer');
+
+menuBtn?.addEventListener('click', () => {
+  navDrawer.classList.toggle('open');
+});
+
+navDrawer?.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => navDrawer.classList.remove('open'));
 });
 
 // ==================== SMOOTH SCROLL ====================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        
-        if (target) {
-            const navHeight = navbar.offsetHeight;
-            const targetPosition = target.offsetTop - navHeight;
-            
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
-    });
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      window.scrollTo({ top: target.offsetTop - 64, behavior: 'smooth' });
+    }
+  });
 });
 
-// ==================== INTERSECTION OBSERVER ====================
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe elements for animations
-const animateOnScroll = document.querySelectorAll('.timeline-item, .project-card, .stat-card, .contact-card, .blog-card');
-animateOnScroll.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
+// ==================== SKILL TABS ====================
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tab = btn.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(`tab-${tab}`)?.classList.add('active');
+  });
 });
 
-// Add stagger delay to timeline items
-document.querySelectorAll('.timeline-item').forEach((item, index) => {
-    item.style.transitionDelay = `${index * 0.1}s`;
+// ==================== EXPERIENCE TABS ====================
+document.querySelectorAll('.exp-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const exp = btn.dataset.exp;
+    document.querySelectorAll('.exp-tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.exp-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(`exp-${exp}`)?.classList.add('active');
+  });
 });
 
-// Add stagger delay to project cards
-document.querySelectorAll('.project-card').forEach((card, index) => {
-    card.style.transitionDelay = `${index * 0.1}s`;
-});
+// ==================== STAT COUNTERS ====================
+const statData = [
+  { target: 3.57,   decimals: 2, suffix: '',  format: null },
+  { target: 400000, decimals: 0, suffix: '+', format: 'comma' },
+  { target: 20,    decimals: 0, suffix: '+', format: null },
+  { target: 3,      decimals: 0, suffix: '',  format: null },
+];
 
-// ==================== CAT CLICK EASTER EGG ====================
-let catClickCount = 0;
+function animateCounter(el, data) {
+  const { target, decimals, suffix, format } = data;
+  const duration = 1400;
+  const start = performance.now();
+  function step(now) {
+    const p = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    const val = ease * target;
+    let str = decimals > 0 ? val.toFixed(decimals) : Math.round(val).toString();
+    if (format === 'comma') str = parseInt(str).toLocaleString('en-US');
+    el.textContent = str + suffix;
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+const statsBlock = document.querySelector('.hero-stats-block');
+if (statsBlock) {
+  const hsEls = statsBlock.querySelectorAll('.hs');
+  let fired = false;
+  const statsObserver = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting && !fired) {
+      fired = true;
+      hsEls.forEach((hs, i) => {
+        const numEl = hs.querySelector('.hs-num');
+        if (numEl && statData[i]) animateCounter(numEl, statData[i]); // <-- was statData[i].display
+      });
+    }
+  }, { threshold: 0.5 });
+  statsObserver.observe(statsBlock);
+}
+
+// ==================== SCROLL REVEAL ====================
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ==================== RADAR CHART ====================
+function drawRadar() {
+  const canvas = document.getElementById('radarChart');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const cx = W / 2, cy = H / 2;
+  const r = Math.min(W, H) * 0.38;
+
+  const labels = ['ML / Data', 'Programming', 'Design', 'Systems', 'Research', '  Communication'];
+  const values = [0.88, 0.82, 0.75, 0.72, 0.78, 0.85];
+  const n = labels.length;
+  const isDark = html.getAttribute('data-theme') !== 'light';
+  const accent = isDark ? '#00e6c8' : '#00a896';
+  const textCol = isDark ? 'rgba(232,234,240,0.7)' : 'rgba(17,19,24,0.6)';
+  const gridCol = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)';
+
+  ctx.clearRect(0, 0, W, H);
+
+  const angle = (i) => (Math.PI * 2 * i) / n - Math.PI / 2;
+  const pt = (i, val) => ({
+    x: cx + Math.cos(angle(i)) * r * val,
+    y: cy + Math.sin(angle(i)) * r * val,
+  });
+
+  // Grid rings
+  [0.25, 0.5, 0.75, 1].forEach(ring => {
+    ctx.beginPath();
+    for (let i = 0; i < n; i++) {
+      const p = pt(i, ring);
+      i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
+    }
+    ctx.closePath();
+    ctx.strokeStyle = gridCol;
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  });
+
+  // Spokes
+  for (let i = 0; i < n; i++) {
+    const p = pt(i, 1);
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(p.x, p.y);
+    ctx.strokeStyle = gridCol;
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+
+  // Data fill
+  ctx.beginPath();
+  for (let i = 0; i < n; i++) {
+    const p = pt(i, values[i]);
+    i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
+  }
+  ctx.closePath();
+  ctx.fillStyle = isDark ? 'rgba(0,230,200,0.12)' : 'rgba(0,168,150,0.12)';
+  ctx.fill();
+  ctx.strokeStyle = accent;
+  ctx.lineWidth = 1.5;
+  ctx.stroke();
+
+  // Dots
+  for (let i = 0; i < n; i++) {
+    const p = pt(i, values[i]);
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 3.5, 0, Math.PI * 2);
+    ctx.fillStyle = accent;
+    ctx.fill();
+  }
+
+  // Labels
+  ctx.font = '500 10px DM Mono, monospace';
+  ctx.fillStyle = textCol;
+  ctx.textAlign = 'center';
+  for (let i = 0; i < n; i++) {
+    const p = pt(i, 1.22);
+    ctx.fillText(labels[i], p.x, p.y + 4);
+  }
+}
+
+drawRadar();
+themeBtn?.addEventListener('click', () => setTimeout(drawRadar, 50));
+
+// ==================== FLOATING CATS ====================
+const catsLayer = document.getElementById('cats-layer');
+const catNames = ['akukiku_cat2', 'Bumba_dog1', 'Cebi_cat1', 'koboy_dog2', 'landi_dog3', 'lyra_cat3'];
 let totalCatClicks = 0;
 
-document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('floating-cat')) {
-        catClickCount++;
-        totalCatClicks++;
-        
-        // Make the clicked cat briefly more visible and bigger
-        e.target.style.opacity = '0.9';
-        const currentTransform = e.target.style.transform;
-        e.target.style.transform = 'scale(1.3) rotate(360deg)';
-        
-        setTimeout(() => {
-            e.target.style.opacity = '0.3';
-            e.target.style.transform = currentTransform;
-        }, 400);
-        
-        // Easter egg: if user clicks 5 cats, spawn more!
-        if (catClickCount === 5) {
-            for (let i = 0; i < 4; i++) {
-                setTimeout(() => createFloatingCat(), i * 100);
-            }
-            catClickCount = 0;
-            
-            // Show fun message
-            if (totalCatClicks === 5) {
-                console.log('%c🐱 Meow! You found the cats! Keep clicking for more!', 'font-size: 16px; color: #2563eb;');
-            }
-        }
-        
-        // Super secret: click 20 cats total
-        if (totalCatClicks === 20) {
-            alert('🎉 Wow! You REALLY love cats! Here\'s a secret: Press Ctrl+Shift+B to access the blog CMS!');
-        }
+function spawnCat() {
+  const img = document.createElement('img');
+  img.src = `assets/cats/${catNames[Math.floor(Math.random() * catNames.length)]}.png`;
+  img.classList.add('floating-cat');
+  img.style.width = `${70 + Math.random() * 50}px`;
+
+  const startX = Math.random() * (window.innerWidth - 120);
+  const startY = Math.random() * (window.innerHeight - 120);
+  img.style.left = `${startX}px`;
+  img.style.top = `${startY}px`;
+
+  catsLayer?.appendChild(img);
+  requestAnimationFrame(() => img.classList.add('visible'));
+
+  moveCat(img, startX, startY);
+
+  img.addEventListener('click', () => {
+    totalCatClicks++;
+    img.style.transform = 'scale(1.3) rotate(-8deg)';
+    img.style.opacity = '0.7';
+    setTimeout(() => { img.style.transform = ''; img.style.opacity = ''; }, 350);
+    if (totalCatClicks % 5 === 0) spawnCat();
+  });
+}
+
+function moveCat(img, x, y) {
+  const angle = Math.random() * Math.PI * 2;
+  const dist = 200 + Math.random() * 300;
+  let tx = x + Math.cos(angle) * dist;
+  let ty = y + Math.sin(angle) * dist;
+  tx = Math.max(0, Math.min(window.innerWidth - 120, tx));
+  ty = Math.max(0, Math.min(window.innerHeight - 120, ty));
+  const duration = 20000 + Math.random() * 15000;
+
+  img.style.transition = `left ${duration}ms linear, top ${duration}ms linear`;
+  requestAnimationFrame(() => {
+    img.style.left = `${tx}px`;
+    img.style.top = `${ty}px`;
+  });
+
+  setTimeout(() => moveCat(img, tx, ty), duration);
+}
+
+for (let i = 0; i < 12; i++) setTimeout(spawnCat, i * 200);
+
+// ==================== SCROLL CUE DECODE ====================
+const WORD = 'scroll';
+const NOISE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234!@#%&';
+const scLetters = document.querySelectorAll('.sc-letter');
+
+function randChar() {
+  return NOISE[Math.floor(Math.random() * NOISE.length)];
+}
+
+function runDecode() {
+  scLetters.forEach(el => {
+    el.textContent = randChar();
+    el.className = 'sc-letter';
+  });
+
+  let resolved = 0;
+
+  function resolveNext() {
+    if (resolved >= WORD.length) {
+      setTimeout(() => {
+        let bursts = 0;
+        const bust = setInterval(() => {
+          scLetters.forEach(el => el.textContent = randChar());
+          bursts++;
+          if (bursts > 4) {
+            clearInterval(bust);
+            setTimeout(runDecode, 200);
+          }
+        }, 60);
+      }, 1800);
+      return;
     }
-});
 
-// ==================== PARALLAX EFFECT ====================
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const heroContent = document.querySelector('.hero-content');
-    
-    if (heroContent && scrolled < window.innerHeight) {
-        heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
-        heroContent.style.opacity = 1 - (scrolled / window.innerHeight) * 0.8;
-    }
-});
+    const el = scLetters[resolved];
+    let scrambles = 0;
 
-// ==================== MOBILE HANDLING ====================
-const handleResize = () => {
-    if (window.innerWidth <= 640) {
-        console.log('Mobile view active');
-    }
-};
+    el.classList.add('active');
 
-window.addEventListener('resize', handleResize);
-handleResize();
+    const scramble = setInterval(() => {
+      el.textContent = randChar();
+      scrambles++;
+      if (scrambles >= 6) {
+        clearInterval(scramble);
+        el.textContent = WORD[resolved];
+        el.classList.remove('active');
+        el.classList.add('resolved');
+        resolved++;
+        setTimeout(resolveNext, 90);
+      }
+    }, 40);
+  }
 
-// ==================== PAGE LOAD ANIMATION ====================
-window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
-    
-    const heroContent = document.querySelector('.hero-content');
-    if (heroContent) {
-        heroContent.style.opacity = '0';
-        heroContent.style.transform = 'translateY(30px)';
-        
-        setTimeout(() => {
-            heroContent.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-            heroContent.style.opacity = '1';
-            heroContent.style.transform = 'translateY(0)';
-        }, 100);
-    }
-});
+  setTimeout(resolveNext, 300);
+}
 
-// ==================== CONSOLE EASTER EGGS ====================
-console.log('%c👋 Hello there!', 'font-size: 20px; font-weight: bold; color: #2563eb;');
-console.log('%c🐱 Try clicking on the floating cats! Click 5 to spawn more!', 'font-size: 14px; color: #64748b;');
-console.log('%c🎨 Press Ctrl+Shift+B to access the secret blog CMS!', 'font-size: 14px; color: #8b5cf6;');
-console.log('%c💡 Toggle dark mode with the button in the top right!', 'font-size: 14px; color: #64748b;');
-console.log('%c❤️ Built with curiosity by Gerald', 'font-size: 12px; font-style: italic; color: #8b5cf6;');
-
-// ==================== INTERACTIVE PROJECT CARDS ====================
-document.querySelectorAll('.interactive-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.setProperty('--hover-scale', '1.05');
-    });
-    
-    card.addEventListener('mouseleave', function() {
-        this.style.setProperty('--hover-scale', '1');
-    });
-});
+runDecode();
