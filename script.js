@@ -2,7 +2,7 @@
 const html = document.documentElement;
 const themeBtn = document.getElementById('theme-btn');
 
-const savedTheme = localStorage.getItem('theme') || 'dark';
+const savedTheme = localStorage.getItem('theme') || 'light';
 html.setAttribute('data-theme', savedTheme);
 
 themeBtn?.addEventListener('click', () => {
@@ -41,15 +41,21 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// ==================== SKILL TABS ====================
+// ==================== SKILL TABS + DENDROGRAM ====================
+const dendroBranches = document.querySelectorAll('.dendro-branch');
+
+function setActiveSkillTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.toggle('active', c.id === `tab-${tab}`));
+  dendroBranches.forEach(g => g.classList.toggle('active', g.dataset.tab === tab));
+}
+
 document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const tab = btn.dataset.tab;
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(`tab-${tab}`)?.classList.add('active');
-  });
+  btn.addEventListener('click', () => setActiveSkillTab(btn.dataset.tab));
+});
+
+document.querySelectorAll('.dendro-leaf-label').forEach(label => {
+  label.addEventListener('click', () => setActiveSkillTab(label.dataset.tab));
 });
 
 // ==================== EXPERIENCE TABS ====================
@@ -64,23 +70,16 @@ document.querySelectorAll('.exp-tab').forEach(btn => {
 });
 
 // ==================== STAT COUNTERS ====================
-const statData = [
-  { target: 3.57,   decimals: 2, suffix: '',  format: null },
-  { target: 400000, decimals: 0, suffix: '+', format: 'comma' },
-  { target: 20,    decimals: 0, suffix: '+', format: null },
-  { target: 3,      decimals: 0, suffix: '',  format: null },
-];
-
-function animateCounter(el, data) {
-  const { target, decimals, suffix, format } = data;
+// Values mirror each .hs element's own data-target/data-decimal/data-suffix,
+// read directly off the markup so the two never drift out of sync.
+function animateCounter(el, target, decimals, suffix) {
   const duration = 1400;
   const start = performance.now();
   function step(now) {
     const p = Math.min((now - start) / duration, 1);
     const ease = 1 - Math.pow(1 - p, 3);
     const val = ease * target;
-    let str = decimals > 0 ? val.toFixed(decimals) : Math.round(val).toString();
-    if (format === 'comma') str = parseInt(str).toLocaleString('en-US');
+    const str = decimals > 0 ? val.toFixed(decimals) : Math.round(val).toString();
     el.textContent = str + suffix;
     if (p < 1) requestAnimationFrame(step);
   }
@@ -94,9 +93,12 @@ if (statsBlock) {
   const statsObserver = new IntersectionObserver(([entry]) => {
     if (entry.isIntersecting && !fired) {
       fired = true;
-      hsEls.forEach((hs, i) => {
+      hsEls.forEach(hs => {
         const numEl = hs.querySelector('.hs-num');
-        if (numEl && statData[i]) animateCounter(numEl, statData[i]); // <-- was statData[i].display
+        const target = parseFloat(hs.dataset.target);
+        const decimals = parseInt(hs.dataset.decimal || '0', 10);
+        const suffix = hs.dataset.suffix || '';
+        if (numEl && !Number.isNaN(target)) animateCounter(numEl, target, decimals, suffix);
       });
     }
   }, { threshold: 0.5 });
@@ -114,90 +116,6 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-// ==================== RADAR CHART ====================
-function drawRadar() {
-  const canvas = document.getElementById('radarChart');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const W = canvas.width, H = canvas.height;
-  const cx = W / 2, cy = H / 2;
-  const r = Math.min(W, H) * 0.38;
-
-  const labels = ['ML / Data', 'Programming', 'Design', 'Systems', 'Research', '  Communication'];
-  const values = [0.88, 0.82, 0.75, 0.72, 0.78, 0.85];
-  const n = labels.length;
-  const isDark = html.getAttribute('data-theme') !== 'light';
-  const accent = isDark ? '#00e6c8' : '#00a896';
-  const textCol = isDark ? 'rgba(232,234,240,0.7)' : 'rgba(17,19,24,0.6)';
-  const gridCol = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)';
-
-  ctx.clearRect(0, 0, W, H);
-
-  const angle = (i) => (Math.PI * 2 * i) / n - Math.PI / 2;
-  const pt = (i, val) => ({
-    x: cx + Math.cos(angle(i)) * r * val,
-    y: cy + Math.sin(angle(i)) * r * val,
-  });
-
-  // Grid rings
-  [0.25, 0.5, 0.75, 1].forEach(ring => {
-    ctx.beginPath();
-    for (let i = 0; i < n; i++) {
-      const p = pt(i, ring);
-      i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
-    }
-    ctx.closePath();
-    ctx.strokeStyle = gridCol;
-    ctx.lineWidth = 1;
-    ctx.stroke();
-  });
-
-  // Spokes
-  for (let i = 0; i < n; i++) {
-    const p = pt(i, 1);
-    ctx.beginPath();
-    ctx.moveTo(cx, cy);
-    ctx.lineTo(p.x, p.y);
-    ctx.strokeStyle = gridCol;
-    ctx.lineWidth = 1;
-    ctx.stroke();
-  }
-
-  // Data fill
-  ctx.beginPath();
-  for (let i = 0; i < n; i++) {
-    const p = pt(i, values[i]);
-    i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
-  }
-  ctx.closePath();
-  ctx.fillStyle = isDark ? 'rgba(0,230,200,0.12)' : 'rgba(0,168,150,0.12)';
-  ctx.fill();
-  ctx.strokeStyle = accent;
-  ctx.lineWidth = 1.5;
-  ctx.stroke();
-
-  // Dots
-  for (let i = 0; i < n; i++) {
-    const p = pt(i, values[i]);
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, 3.5, 0, Math.PI * 2);
-    ctx.fillStyle = accent;
-    ctx.fill();
-  }
-
-  // Labels
-  ctx.font = '500 10px DM Mono, monospace';
-  ctx.fillStyle = textCol;
-  ctx.textAlign = 'center';
-  for (let i = 0; i < n; i++) {
-    const p = pt(i, 1.22);
-    ctx.fillText(labels[i], p.x, p.y + 4);
-  }
-}
-
-drawRadar();
-themeBtn?.addEventListener('click', () => setTimeout(drawRadar, 50));
 
 // ==================== FLOATING CATS ====================
 const catsLayer = document.getElementById('cats-layer');
@@ -247,7 +165,9 @@ function moveCat(img, x, y) {
   setTimeout(() => moveCat(img, tx, ty), duration);
 }
 
-for (let i = 0; i < 12; i++) setTimeout(spawnCat, i * 200);
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  for (let i = 0; i < 12; i++) setTimeout(spawnCat, i * 200);
+}
 
 // ==================== SCROLL CUE DECODE ====================
 const WORD = 'scroll';
@@ -304,4 +224,6 @@ function runDecode() {
   setTimeout(resolveNext, 300);
 }
 
-runDecode();
+if (scLetters.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  runDecode();
+}
