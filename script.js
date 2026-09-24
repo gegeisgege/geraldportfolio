@@ -685,62 +685,98 @@ document.addEventListener('keydown', e => {
 });
 
 // ==================== FLOATING CATS ====================
-const catsLayer = document.getElementById('cats-layer');
-const catNames = ['akukiku_cat2', 'Bumba_dog1', 'Cebi_cat1', 'koboy_dog2', 'landi_dog3', 'lyra_cat3'];
-const MAX_CATS = 36;
-let totalCatClicks = 0;
-let catCount = 0;
+  const catsLayer = document.getElementById('cats-layer');
+  const catNames = ['akukiku_cat2', 'Bumba_dog1', 'Cebi_cat1', 'koboy_dog2', 'landi_dog3', 'lyra_cat3'];
+  const MAX_CATS = 36;
+  let totalCatClicks = 0;
+  let catCount = 0;
 
-function spawnCat() {
-  if (catCount >= MAX_CATS) return;
-  catCount++;
-  const img = document.createElement('img');
-  img.src = `assets/cats/${catNames[Math.floor(Math.random() * catNames.length)]}.png`;
-  img.alt = '';
-  img.setAttribute('aria-hidden', 'true');
-  img.classList.add('floating-cat');
-  img.style.width = `${70 + Math.random() * 50}px`;
+  function spawnCat() {
+    if (catCount >= MAX_CATS) return;
+    catCount++;
+    const img = document.createElement('img');
+    img.src = `assets/cats/${catNames[Math.floor(Math.random() * catNames.length)]}.png`;
+    img.alt = '';
+    img.setAttribute('aria-hidden', 'true');
+    img.classList.add('floating-cat');
+    img.style.width = `${70 + Math.random() * 50}px`;
 
-  const startX = Math.random() * (window.innerWidth - 120);
-  const startY = Math.random() * (window.innerHeight - 120);
-  img.style.left = `${startX}px`;
-  img.style.top = `${startY}px`;
+    const startX = Math.random() * (window.innerWidth - 120);
+    const startY = Math.random() * (window.innerHeight - 120);
+    img.style.left = `${startX}px`;
+    img.style.top = `${startY}px`;
 
-  catsLayer?.appendChild(img);
-  requestAnimationFrame(() => img.classList.add('visible'));
+    catsLayer?.appendChild(img);
+    requestAnimationFrame(() => img.classList.add('visible'));
 
-  moveCat(img, startX, startY);
+    moveCat(img, startX, startY);
+  }
 
-  img.addEventListener('click', () => {
+  function moveCat(img, x, y) {
+    const angle = Math.random() * Math.PI * 2;
+    const dist = 200 + Math.random() * 300;
+    let tx = x + Math.cos(angle) * dist;
+    let ty = y + Math.sin(angle) * dist;
+    tx = Math.max(0, Math.min(window.innerWidth - 120, tx));
+    ty = Math.max(0, Math.min(window.innerHeight - 120, ty));
+    const duration = 20000 + Math.random() * 15000;
+
+    img.style.transition = `left ${duration}ms linear, top ${duration}ms linear`;
+    requestAnimationFrame(() => {
+      img.style.left = `${tx}px`;
+      img.style.top = `${ty}px`;
+    });
+
+    setTimeout(() => moveCat(img, tx, ty), duration);
+  }
+
+  // Cats ignore the pointer so links and buttons stay usable. Hovers and clicks
+  // are matched against each cat's current on-screen box instead.
+  const INTERACTIVE = 'a, button, input, textarea, select, label, summary, iframe, [role="button"], .drawer, .palette, #nav';
+
+  function catAt(x, y, target) {
+    if (target && target.closest && target.closest(INTERACTIVE)) return null;
+    const cats = catsLayer ? catsLayer.children : [];
+    for (let i = cats.length - 1; i >= 0; i--) {
+      const r = cats[i].getBoundingClientRect();
+      if (x >= r.left && x <= r.right && y >= r.top && y <= r.bottom) return cats[i];
+    }
+    return null;
+  }
+
+  let hoveredCat = null;
+  let hoverTick = false;
+
+  window.addEventListener('pointermove', e => {
+    if (e.pointerType === 'touch' || hoverTick) return;
+    hoverTick = true;
+    const { clientX: x, clientY: y, target } = e;
+    requestAnimationFrame(() => {
+      hoverTick = false;
+      const cat = catAt(x, y, target);
+      if (cat !== hoveredCat) {
+        hoveredCat?.classList.remove('hovered');
+        cat?.classList.add('hovered');
+        hoveredCat = cat;
+        root.classList.toggle('cat-hover', !!cat);
+      }
+    });
+  }, { passive: true });
+
+  document.addEventListener('click', e => {
+    if (e.detail === 0) return; // ignore keyboard-triggered clicks
+    const cat = catAt(e.clientX, e.clientY, e.target);
+    if (!cat) return;
     totalCatClicks++;
-    img.style.transform = 'scale(1.3) rotate(-8deg)';
-    img.style.opacity = '0.7';
-    setTimeout(() => { img.style.transform = ''; img.style.opacity = ''; }, 350);
+    cat.style.transform = 'scale(1.3) rotate(-8deg)';
+    cat.style.opacity = '0.7';
+    setTimeout(() => { cat.style.transform = ''; cat.style.opacity = ''; }, 350);
     if (totalCatClicks % 5 === 0) spawnCat();
   });
-}
 
-function moveCat(img, x, y) {
-  const angle = Math.random() * Math.PI * 2;
-  const dist = 200 + Math.random() * 300;
-  let tx = x + Math.cos(angle) * dist;
-  let ty = y + Math.sin(angle) * dist;
-  tx = Math.max(0, Math.min(window.innerWidth - 120, tx));
-  ty = Math.max(0, Math.min(window.innerHeight - 120, ty));
-  const duration = 20000 + Math.random() * 15000;
-
-  img.style.transition = `left ${duration}ms linear, top ${duration}ms linear`;
-  requestAnimationFrame(() => {
-    img.style.left = `${tx}px`;
-    img.style.top = `${ty}px`;
-  });
-
-  setTimeout(() => moveCat(img, tx, ty), duration);
-}
-
-if (!reduceMotion) {
-  for (let i = 0; i < 12; i++) setTimeout(spawnCat, i * 200);
-}
+  if (!reduceMotion) {
+    for (let i = 0; i < 12; i++) setTimeout(spawnCat, i * 200);
+  }
 
 // ==================== SCROLL CUE DECODE ====================
 const WORD = 'scroll';

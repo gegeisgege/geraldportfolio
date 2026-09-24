@@ -108,29 +108,31 @@ button { font-family: inherit; }
 }
 
 /* ==================== FLOATING CATS ==================== */
-#cats-layer { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+/* Sits above the page but never intercepts the pointer; clicks are matched in script.js */
+  #cats-layer { position: fixed; inset: 0; pointer-events: none; z-index: 5; overflow: hidden; }
 
-.floating-cat {
-  position: absolute;
-  width: 90px;
-  height: auto;
-  opacity: 0;
-  pointer-events: all;
-  cursor: pointer;
-  filter: grayscale(0.55) brightness(0.9) contrast(0.95);
-  transition: opacity 0.5s, transform 0.3s, filter 0.3s;
-  will-change: transform;
-  user-select: none;
-}
+  .floating-cat {
+    position: absolute;
+    width: 90px;
+    height: auto;
+    opacity: 0;
+    pointer-events: none;
+    filter: grayscale(0.55) brightness(0.9) contrast(0.95);
+    transition: opacity 0.5s, transform 0.3s, filter 0.3s;
+    will-change: transform;
+    user-select: none;
+  }
 
-.floating-cat.visible { opacity: 0.16; }
-[data-theme="dark"] .floating-cat.visible { opacity: 0.14; filter: grayscale(0.4) brightness(1.1); }
+  .floating-cat.visible { opacity: 0.16; }
+  [data-theme="dark"] .floating-cat.visible { opacity: 0.14; filter: grayscale(0.4) brightness(1.1); }
 
-.floating-cat:hover {
-  opacity: 0.6 !important;
-  filter: grayscale(0) brightness(1);
-  transform: scale(1.15) rotate(-4deg);
-}
+  .floating-cat.hovered {
+    opacity: 0.6 !important;
+    filter: grayscale(0) brightness(1) !important;
+    transform: scale(1.15) rotate(-4deg);
+  }
+
+  html.cat-hover body { cursor: pointer; }
 
 /* ==================== NAV ==================== */
 #nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); z-index: 1000; transition: background 0.3s, backdrop-filter 0.3s; }
