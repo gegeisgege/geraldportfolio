@@ -3,28 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gerald Mahapranaja Pillian</title>
+<title>Gerald Mahapranaja Pillian | Information Systems Graduate</title>
+<meta name="description" content="Information Systems graduate from ITS working across IT governance, data analytics and secure full-stack development. IT intern at PT. PAL Indonesia, open to full-time roles.">
+<meta name="theme-color" content="#eeefe9">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gerald Mahapranaja Pillian">
+<meta property="og:description" content="Information Systems graduate. IT governance, data analytics and secure software. Open to full-time roles.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    root.classList.add('js');
+    try {
+      var t = localStorage.getItem('theme');
+      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', t);
+    } catch (e) {}
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) root.classList.add('particles');
+  })();
+</script>
+
 <link rel="stylesheet" href="styles.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,380..600;1,9..144,380..600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Gerald Mahapranaja Pillian",
+  "jobTitle": "IT Intern, Cybersecurity & IT Governance",
+  "worksFor": { "@type": "Organization", "name": "PT. PAL Indonesia" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Institut Teknologi Sepuluh Nopember" },
+  "address": { "@type": "PostalAddress", "addressLocality": "Surabaya", "addressCountry": "ID" },
+  "sameAs": ["https://github.com/gegeisgege", "https://linkedin.com/in/geraldmpillian"]
+}
+</script>
 </head>
 <body>
+<a href="#about" class="skip-link">Skip to content</a>
+<div id="progress" aria-hidden="true"></div>
 <div id="cats-layer"></div>
-
-<button id="theme-btn" aria-label="Toggle theme">
-  <span class="icon-sun">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-  </span>
-  <span class="icon-moon">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-  </span>
-</button>
 
 <nav id="nav">
   <div class="nav-inner">
-    <a href="#home" class="nav-logo">GM<span class="accent">P</span></a>
+    <a href="#home" class="nav-logo" aria-label="Back to top">GM<span class="accent">P</span></a>
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
@@ -32,9 +57,24 @@
       <a href="#research">Research</a>
       <a href="#contact">Contact</a>
     </div>
-    <button class="nav-menu-btn" id="menuBtn" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-actions">
+      <button id="paletteBtn" class="kbd-btn" aria-label="Open quick navigation">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span id="kbdHint">Ctrl K</span>
+      </button>
+      <button id="theme-btn" class="icon-btn" aria-label="Toggle theme">
+        <span class="icon-sun">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </span>
+        <span class="icon-moon">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </span>
+      </button>
+      <a href="CV_2026_3.pdf" download class="nav-cv">Download CV</a>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
   <div class="nav-drawer" id="navDrawer">
     <a href="#about">About</a>
@@ -42,82 +82,109 @@
     <a href="#projects">Projects</a>
     <a href="#research">Research</a>
     <a href="#contact">Contact</a>
+    <a href="CV_2026_3.pdf" download>Download CV</a>
   </div>
 </nav>
 
+<!-- ==================== HERO ==================== -->
 <section id="home" class="hero">
-  <div class="hero-grid">
-    <div class="hero-left">
-      <div class="hero-eyebrow">
-        <span class="status-dot"></span>
-        <span>Final-year &middot; open to full-time roles</span>
-      </div>
-      <h1>Gerald<br><em>Mahapranaja</em><br>Pillian</h1>
-      <p class="hero-role">Information Systems &middot; Data &amp; IT Governance</p>
-      <p class="hero-desc">Currently interning on the Cybersecurity &amp; IT Governance team at PT. PAL Indonesia, finishing a thesis in hierarchical clustering, and still occasionally chasing cats across this page.</p>
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+
+  <div class="hero-inner">
+    <p class="hero-status"><span class="status-dot"></span>Open to full-time roles</p>
+
+    <h1 id="heroName" class="hero-name">
+      <span class="hn-line">Gerald</span>
+      <span class="hn-line hn-italic">Mahapranaja</span>
+      <span class="hn-line">Pillian</span>
+    </h1>
+
+    <div class="hero-copy">
+      <p class="hero-role">Information Systems graduate, Class of 2026</p>
+      <p class="hero-desc">I work where IT governance, data and secure software meet. Right now I'm an IT intern on the Cybersecurity &amp; IT Governance team at PT. PAL Indonesia, drafting COBIT 2019 assessments and building the Laravel platforms they call for. I'm looking for a full-time role in IT governance, data analytics or secure software development.</p>
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Get in Touch</a>
+        <a href="#contact" class="btn-primary">Get in touch</a>
         <a href="CV_2026_3.pdf" download class="btn-outline">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download CV
         </a>
       </div>
     </div>
-    <div class="hero-right">
+
+    <div class="hero-side">
+      <div class="now-card">
+        <p class="now-title">Right now</p>
+        <dl class="now-list">
+          <div><dt>Working</dt><dd>IT intern at PT. PAL Indonesia</dd></div>
+          <div><dt id="gradLabel">Graduating</dt><dd>11 Oct 2026, ITS <span id="gradCountdown" class="now-chip"></span></dd></div>
+          <div><dt>Building</dt><dd>Laravel platforms and a drone inspection HMI</dd></div>
+          <div><dt>Based in</dt><dd>Surabaya, open to relocation</dd></div>
+        </dl>
+      </div>
       <div class="hero-stats-block">
         <div class="hs" data-target="3.56" data-decimal="2">
-          <span class="hs-num">0</span>
-          <span class="hs-label">GPA / 4.00</span>
+          <span class="hs-num">3.56</span>
+          <span class="hs-label">GPA out of 4.00</span>
         </div>
         <div class="hs" data-target="100" data-suffix="K+">
-          <span class="hs-num">0</span>
-          <span class="hs-label">ML Training Samples</span>
+          <span class="hs-num">100K+</span>
+          <span class="hs-label">ML training samples</span>
         </div>
         <div class="hs" data-target="5">
-          <span class="hs-num">0</span>
-          <span class="hs-label">Internal Platforms Shipped</span>
+          <span class="hs-num">5</span>
+          <span class="hs-label">Internal platforms built</span>
+        </div>
+        <div class="hs" data-target="4">
+          <span class="hs-num">4</span>
+          <span class="hs-label">Research works</span>
         </div>
         <div class="hs" data-target="3">
-          <span class="hs-num">0</span>
-          <span class="hs-label">Research Works</span>
+          <span class="hs-num">3</span>
+          <span class="hs-label">Certifications</span>
+        </div>
+        <div class="hs" data-target="300" data-suffix="+">
+          <span class="hs-num">300+</span>
+          <span class="hs-label">Event participants managed</span>
         </div>
       </div>
-      <div class="hero-tags">
-        <span>Data Analytics</span>
-        <span>Machine Learning</span>
-        <span>IT Governance</span>
-        <span>Secure Full-Stack Dev</span>
-        <span>Computer Vision</span>
-        <span>Clustering</span>
-        <span>UI/UX</span>
-      </div>
     </div>
-  </div>
-    <div class="scroll-cue">
-    <div class="sc-line"></div>
-    <div class="sc-letters" id="scLetters">
+
+    <div class="scroll-cue" aria-hidden="true">
+      <div class="sc-letters" id="scLetters">
         <span class="sc-letter">s</span>
         <span class="sc-letter">c</span>
         <span class="sc-letter">r</span>
         <span class="sc-letter">o</span>
         <span class="sc-letter">l</span>
         <span class="sc-letter">l</span>
+      </div>
+      <div class="sc-line"></div>
     </div>
-    </div>
+  </div>
 </section>
 
+<main id="main">
+
+<!-- ==================== ABOUT ==================== -->
 <section id="about" class="section">
   <div class="container">
     <div class="section-header">
-      <span class="section-index">&sect; 01</span>
       <h2>About</h2>
     </div>
     <div class="about-layout">
       <div class="about-text">
-        <p class="about-lead">I'm an Information Systems student at <strong>Institut Teknologi Sepuluh Nopember (ITS)</strong>, currently splitting my time between a governance internship and a thesis on how to statistically tell struggling students apart from thriving ones.</p>
-        <p>Right now I'm on the Cybersecurity &amp; IT Governance team at <strong>PT. PAL Indonesia</strong>, where I draft COBIT 2019 assessments by day and build the internal Laravel platforms that those assessments end up recommending — five of them so far, from a pentest-finding tracker to a service dependency map.</p>
-        <p>The exchange semester at <strong>NTUST Taiwan</strong> is where the data-science side sharpened: neural networks tuned with particle swarm optimisation for Taipei's air quality, a fuzzy logic controller for a two-axis tracking rig, and a lot of late nights in CoppeliaSim.</p>
-        <p>My thesis applies Ward's linkage hierarchical clustering to how medical students actually perform across written exams, OSCEs, and problem-based assessments — the same clustering logic shows up, half-jokingly, in the diagram to the right.</p>
+        <div class="about-id">
+          <img class="about-photo" src="assets/Foto_formal_Gerald.jpg" alt="Portrait of Gerald Mahapranaja Pillian" width="76" height="76" loading="lazy" onerror="this.closest('.about-id').classList.add('no-photo')">
+          <div class="about-id-text">
+            <strong>Gerald</strong>
+            <small>S.Kom., Institut Teknologi Sepuluh Nopember. Based in Surabaya, open to relocation.</small>
+          </div>
+        </div>
+
+        <p class="about-lead">I'm an Information Systems graduate from <strong>Institut Teknologi Sepuluh Nopember (ITS)</strong>, working at the point where IT governance, data and secure software meet.</p>
+        <p>At <strong>PT. PAL Indonesia</strong> I'm on the Cybersecurity &amp; IT Governance team. I draft COBIT 2019 assessments and SOPs, then build the internal platforms those assessments end up recommending: five Laravel applications so far, from a pentest finding tracker to a service dependency map, plus a Kanban and scheduling dashboard I took from design to production on the company's own hosting.</p>
+        <p>My exchange semester at <strong>NTUST Taiwan</strong> is where the data science side sharpened: a neural network tuned with particle swarm optimisation for Taipei's air quality, a fuzzy logic controller for a two-axis tracking rig, and a lot of late nights in CoppeliaSim.</p>
+        <p>My thesis applies Ward's linkage hierarchical clustering to how medical students actually perform across written exams, OSCEs and problem-based assessments. The same idea shows up, half-jokingly, in the diagram on the right.</p>
         <div class="about-links">
           <a href="https://github.com/gegeisgege" target="_blank" rel="noopener" class="pill-link">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
@@ -129,75 +196,89 @@
           </a>
         </div>
       </div>
+
       <div class="dendro-wrap">
-        <div class="dendro-title">Skill Profile — read as a dendrogram</div>
-        <svg id="dendroChart" viewBox="0 0 340 220" xmlns="http://www.w3.org/2000/svg" aria-label="Dendrogram clustering skills into four groups">
-          <!-- static backbone: always-connected tree structure -->
+        <div class="dendro-title">Skill profile, read as a dendrogram</div>
+        <svg id="dendroChart" viewBox="0 0 340 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dendrogram clustering skills into five groups">
           <g class="dendro-backbone">
-            <path class="dendro-static-line" d="M104,30 H190" />
-            <path class="dendro-static-line" d="M104,84 H190" />
-            <path class="dendro-static-line" d="M190,30 V84" />
-            <path class="dendro-static-line" d="M190,57 H226" />
-            <path class="dendro-static-line" d="M104,138 H226" />
-            <path class="dendro-static-line" d="M226,57 V138" />
-            <path class="dendro-static-line" d="M226,97.5 H262" />
-            <path class="dendro-static-line" d="M104,188 H262" />
-            <path class="dendro-static-line" d="M262,97.5 V188" />
-            <path class="dendro-static-line" d="M262,142.75 H313" />
+            <path class="dendro-static-line" d="M104,30 H160" />
+            <path class="dendro-static-line" d="M104,80 H160" />
+            <path class="dendro-static-line" d="M160,30 V80" />
+            <path class="dendro-static-line" d="M160,55 H210" />
+            <path class="dendro-static-line" d="M104,130 H210" />
+            <path class="dendro-static-line" d="M210,55 V130" />
+            <path class="dendro-static-line" d="M210,92.5 H250" />
+            <path class="dendro-static-line" d="M104,180 H250" />
+            <path class="dendro-static-line" d="M250,92.5 V180" />
+            <path class="dendro-static-line" d="M250,136.25 H290" />
+            <path class="dendro-static-line" d="M104,230 H290" />
+            <path class="dendro-static-line" d="M290,136.25 V230" />
+            <path class="dendro-static-line" d="M290,183.125 H320" />
           </g>
 
           <g class="dendro-branch" data-tab="prog">
-            <path class="dendro-highlight" d="M104,30 H190 V57 H226 V97.5 H262 V142.75 H313" />
+            <path class="dendro-highlight" d="M104,30 H160 V55 H210 V92.5 H250 V136.25 H290 V183.125 H320" />
             <circle class="dendro-node" cx="104" cy="30" r="3"></circle>
             <text class="dendro-leaf-label" data-tab="prog" x="94" y="34" text-anchor="end">Programming</text>
           </g>
           <g class="dendro-branch" data-tab="ml">
-            <path class="dendro-highlight" d="M104,84 H190 V57 H226 V97.5 H262 V142.75 H313" />
-            <circle class="dendro-node" cx="104" cy="84" r="3"></circle>
-            <text class="dendro-leaf-label" data-tab="ml" x="94" y="88" text-anchor="end">ML &amp; Data</text>
+            <path class="dendro-highlight" d="M104,80 H160 V55 H210 V92.5 H250 V136.25 H290 V183.125 H320" />
+            <circle class="dendro-node" cx="104" cy="80" r="3"></circle>
+            <text class="dendro-leaf-label" data-tab="ml" x="94" y="84" text-anchor="end">ML &amp; Data</text>
+          </g>
+          <g class="dendro-branch" data-tab="gov">
+            <path class="dendro-highlight" d="M104,130 H210 V92.5 H250 V136.25 H290 V183.125 H320" />
+            <circle class="dendro-node" cx="104" cy="130" r="3"></circle>
+            <text class="dendro-leaf-label" data-tab="gov" x="94" y="134" text-anchor="end">Governance</text>
           </g>
           <g class="dendro-branch" data-tab="tools">
-            <path class="dendro-highlight" d="M104,138 H226 V97.5 H262 V142.75 H313" />
-            <circle class="dendro-node" cx="104" cy="138" r="3"></circle>
-            <text class="dendro-leaf-label" data-tab="tools" x="94" y="142" text-anchor="end">Tools</text>
+            <path class="dendro-highlight" d="M104,180 H250 V136.25 H290 V183.125 H320" />
+            <circle class="dendro-node" cx="104" cy="180" r="3"></circle>
+            <text class="dendro-leaf-label" data-tab="tools" x="94" y="184" text-anchor="end">Tools &amp; Media</text>
           </g>
           <g class="dendro-branch" data-tab="lang">
-            <path class="dendro-highlight" d="M104,188 H262 V142.75 H313" />
-            <circle class="dendro-node" cx="104" cy="188" r="3"></circle>
-            <text class="dendro-leaf-label" data-tab="lang" x="94" y="192" text-anchor="end">Languages</text>
+            <path class="dendro-highlight" d="M104,230 H290 V183.125 H320" />
+            <circle class="dendro-node" cx="104" cy="230" r="3"></circle>
+            <text class="dendro-leaf-label" data-tab="lang" x="94" y="234" text-anchor="end">Languages</text>
           </g>
 
           <g class="dendro-root">
-            <circle cx="313" cy="142.75" r="13"></circle>
-            <text x="313" y="146.75" text-anchor="middle">GP</text>
+            <circle cx="320" cy="183.125" r="13"></circle>
+            <text x="320" y="187.125" text-anchor="middle">GP</text>
           </g>
         </svg>
-        <p class="dendro-caption">Same method as my thesis: merge what's closest first. Programming and ML &amp; data cluster tightly; languages branch off on their own.</p>
+        <p class="dendro-caption">Same method as my thesis: merge what is closest first. Programming and ML &amp; data join first, governance follows, and languages branch in last.</p>
         <div class="skills-tabs">
           <div class="tab-bar">
             <button class="tab-btn active" data-tab="prog">Programming</button>
             <button class="tab-btn" data-tab="ml">ML &amp; Data</button>
-            <button class="tab-btn" data-tab="tools">Tools</button>
+            <button class="tab-btn" data-tab="gov">Governance</button>
+            <button class="tab-btn" data-tab="tools">Tools &amp; Media</button>
             <button class="tab-btn" data-tab="lang">Languages</button>
           </div>
           <div class="tab-content active" id="tab-prog">
             <div class="skill-pills">
-              <span>Python</span><span>SQL</span><span>JavaScript</span><span>PHP / Laravel</span><span>Java</span><span>R</span><span>HTML / CSS</span><span>VBA</span>
+              <span>Python</span><span>SQL</span><span>JavaScript</span><span>Node.js</span><span>PHP / Laravel</span><span>Java</span><span>R</span><span>HTML / CSS</span><span>VBA</span>
             </div>
           </div>
           <div class="tab-content" id="tab-ml">
             <div class="skill-pills">
-              <span>Neural Networks</span><span>Particle Swarm Optimisation</span><span>YOLOv12n / Computer Vision</span><span>Hierarchical Clustering</span><span>SAP ERP &amp; BI</span><span>Power BI</span><span>R Studio</span>
+              <span>Neural Networks</span><span>Particle Swarm Optimisation</span><span>YOLOv12n / Computer Vision</span><span>TensorFlow</span><span>Hierarchical Clustering</span><span>SAP ERP &amp; BI</span><span>Power BI</span><span>R Studio</span>
+            </div>
+          </div>
+          <div class="tab-content" id="tab-gov">
+            <div class="skill-pills">
+              <span>COBIT 2019</span><span>Security Governance</span><span>Risk &amp; Exception Management</span><span>SOP Drafting</span><span>RBAC</span><span>Input Validation</span><span>Audit Logging</span><span>SDN / Cisco DevNet</span>
             </div>
           </div>
           <div class="tab-content" id="tab-tools">
             <div class="skill-pills">
-              <span>Figma</span><span>MATLAB</span><span>CoppeliaSim</span><span>Supabase</span><span>Git / GitHub</span><span>Google Cloud APIs</span><span>REST APIs</span><span>LaTeX</span><span>Cisco SDN / DevNet</span>
+              <span>Supabase</span><span>Git / GitHub</span><span>Google Cloud APIs</span><span>REST APIs</span><span>Figma</span><span>MATLAB</span><span>CoppeliaSim</span><span>LaTeX</span><span>Microsoft Office</span><span>Google Workspace</span><span>Video Editing</span><span>Photography</span>
             </div>
           </div>
           <div class="tab-content" id="tab-lang">
             <div class="skill-pills">
-              <span>Indonesian — Native</span><span>English — Fluent</span><span>Javanese — Intermediate</span><span>Mandarin — Basic</span><span>Arabic — Basic</span><span>French — Basic</span><span>German — Basic</span>
+              <span>Indonesian: Native</span><span>English: Fluent</span><span>Javanese: Intermediate</span><span>Mandarin: Basic</span><span>Arabic: Basic</span><span>French: Basic</span><span>German: Basic</span>
             </div>
           </div>
         </div>
@@ -206,33 +287,34 @@
   </div>
 </section>
 
+<!-- ==================== EXPERIENCE ==================== -->
 <section id="experience" class="section section-alt">
   <div class="container">
     <div class="section-header">
-      <span class="section-index">&sect; 02</span>
       <h2>Experience</h2>
     </div>
     <div class="exp-tabs">
       <div class="exp-tab-bar">
-        <button class="exp-tab active" data-exp="pal">PT. PAL <span class="exp-tab-date">2026—Present</span></button>
-        <button class="exp-tab" data-exp="ntust">NTUST <span class="exp-tab-date">2025—2026</span></button>
-        <button class="exp-tab" data-exp="ise">ISE! <span class="exp-tab-date">2023—2025</span></button>
+        <button class="exp-tab active" data-exp="pal">PT. PAL <span class="exp-tab-date">2026&ndash;Now</span></button>
+        <button class="exp-tab" data-exp="ntust">NTUST <span class="exp-tab-date">2025&ndash;2026</span></button>
+        <button class="exp-tab" data-exp="ise">ISE! <span class="exp-tab-date">2023&ndash;2025</span></button>
         <button class="exp-tab" data-exp="debi">DEBI Lab <span class="exp-tab-date">2024</span></button>
-        <button class="exp-tab" data-exp="academic">Academic Support <span class="exp-tab-date">2023—2025</span></button>
-        <button class="exp-tab" data-exp="ieee">IEEE <span class="exp-tab-date">2023—2024</span></button>
-        <button class="exp-tab" data-exp="geo">Global Office <span class="exp-tab-date">2023—2024</span></button>
+        <button class="exp-tab" data-exp="academic">Academic Support <span class="exp-tab-date">2023&ndash;2025</span></button>
+        <button class="exp-tab" data-exp="ieee">IEEE <span class="exp-tab-date">2023&ndash;2024</span></button>
+        <button class="exp-tab" data-exp="geo">Global Office <span class="exp-tab-date">2023&ndash;2024</span></button>
       </div>
       <div class="exp-panels">
         <div class="exp-panel active" id="exp-pal">
           <div class="exp-meta">
-            <span class="exp-date">Aug 2026 — Present</span>
+            <span class="exp-date">Aug 2026 &ndash; Present</span>
             <span class="exp-loc">Surabaya, Indonesia</span>
           </div>
-          <h3>IT Intern, Cybersecurity &amp; Governance <span class="exp-at">@ PT. PAL Indonesia</span></h3>
+          <h3>IT Intern, Cybersecurity &amp; Governance <span class="exp-at">at PT. PAL Indonesia</span></h3>
           <p class="exp-dept">Information Technology Division</p>
           <ul>
             <li>Draft SOPs and run COBIT 2019 domain assessments to flag gaps across the company's IT governance domains</li>
-            <li>Independently architecting and building 5 internal Laravel platforms with RBAC, input validation, and audit logging baked in:</li>
+            <li>Lead a team productivity dashboard end to end: a Kanban board with a Google Calendar style schedule view that pushes WhatsApp reminders for upcoming tasks and deadlines, built on Node.js with a lightweight AI stack. I also handled deployment on the company's cPanel environment, from domain and hosting setup through release and ongoing maintenance</li>
+            <li>Independently architect and build 5 internal Laravel platforms with RBAC, input validation and audit logging built in:</li>
             <li class="sub">Cybersecurity finding &amp; remediation tracker, checked against SLAs</li>
             <li class="sub">Security exception &amp; risk-acceptance register</li>
             <li class="sub">IT service dependency map for change-impact analysis</li>
@@ -242,23 +324,23 @@
         </div>
         <div class="exp-panel" id="exp-ntust">
           <div class="exp-meta">
-            <span class="exp-date">Aug 2025 — Jan 2026</span>
+            <span class="exp-date">Aug 2025 &ndash; Jan 2026</span>
             <span class="exp-loc">Taipei, Taiwan</span>
           </div>
-          <h3>Exchange Student <span class="exp-at">@ National Taiwan University of Science and Technology</span></h3>
+          <h3>Exchange Student <span class="exp-at">at National Taiwan University of Science and Technology</span></h3>
           <p class="exp-dept">Department of Computer Science</p>
           <ul>
             <li>Built a PSO-tuned neural network for PM2.5 and AQI forecasting on 100,000+ Taipei urban sensor samples</li>
-            <li>Designed a fuzzy logic controller for real-time dual-axis autonomous target tracking, validated in CoppeliaSim and MATLAB</li>
-            <li>Modelled an SMTP/IMAP email communication simulation, focused on server-client architecture and protocol flow</li>
+            <li>Designed a Sugeno fuzzy controller with YOLO detection for dual-axis target tracking. It beat inverse-kinematics and PID baselines in Monte Carlo simulation and on a physical turret, and led to a co-authored manuscript</li>
+            <li>Built the server core of a five-person SMTP email simulation in Python sockets: multi-threaded server, protocol state machine, standards compliance and file operations</li>
           </ul>
         </div>
         <div class="exp-panel" id="exp-ise">
           <div class="exp-meta">
-            <span class="exp-date">Apr 2023 — Aug 2025</span>
+            <span class="exp-date">Apr 2023 &ndash; Aug 2025</span>
             <span class="exp-loc">Surabaya, Indonesia</span>
           </div>
-          <h3>Expert Staff, External Relations <span class="exp-at">@ Information Systems Expo (ISE!), ITS</span></h3>
+          <h3>Expert Staff, External Relations <span class="exp-at">at Information Systems Expo (ISE!), ITS</span></h3>
           <ul>
             <li>Progressed from General Staff to Expert Staff; managed and mentored a team of three</li>
             <li>Pitched and secured industry speakers; served as Master of Ceremonies for UX Academy and Data Software Academy</li>
@@ -267,34 +349,34 @@
         </div>
         <div class="exp-panel" id="exp-debi">
           <div class="exp-meta">
-            <span class="exp-date">May 2024 — Jun 2024</span>
+            <span class="exp-date">May 2024 &ndash; Jun 2024</span>
             <span class="exp-loc">Surabaya, Indonesia</span>
           </div>
-          <h3>UI/UX Designer &amp; Developer <span class="exp-at">@ Data Engineering &amp; Business Intelligence Lab, ITS</span></h3>
+          <h3>UI/UX Designer &amp; Developer <span class="exp-at">at Data Engineering &amp; Business Intelligence Lab, ITS</span></h3>
           <ul>
             <li>Designed end-to-end UI/UX for CLASTIC, an AI-powered plastic waste sorting mobile app</li>
             <li>Ran field usability testing in Sumberbening Village, rural Indonesia</li>
-            <li>Produced the full design system: UI components, web assets, and graphic design</li>
+            <li>Produced the full design system: UI components, web assets and graphic design</li>
           </ul>
         </div>
         <div class="exp-panel" id="exp-academic">
           <div class="exp-meta">
-            <span class="exp-date">Sep 2023 — Jul 2025</span>
+            <span class="exp-date">Sep 2023 &ndash; Jul 2025</span>
             <span class="exp-loc">Surabaya, Indonesia</span>
           </div>
-          <h3>Assistant Lecturer &amp; Teaching Assistant <span class="exp-at">@ Dept. of Information Systems, ITS</span></h3>
+          <h3>Assistant Lecturer &amp; Teaching Assistant <span class="exp-at">at Dept. of Information Systems, ITS</span></h3>
           <ul>
-            <li>Assistant Lecturer, Intro to Information Systems (Sep—Dec 2023): designed assignments and projects, graded, and coordinated with course lecturers</li>
-            <li>Lab Assistant &amp; Grader, Predictive Analytics Modelling (Mar—Jul 2025): ran lab sessions and supported instruction</li>
-            <li>Teaching Assistant &amp; Grader, Intro to Statistics (Oct—Dec 2023): graded assignments and assisted instruction</li>
+            <li>Assistant Lecturer, Intro to Information Systems (Sep&ndash;Dec 2023): designed assignments and projects, graded, and coordinated with course lecturers</li>
+            <li>Lab Assistant &amp; Grader, Predictive Analytics Modelling (Mar&ndash;Jul 2025): ran lab sessions and supported instruction</li>
+            <li>Teaching Assistant &amp; Grader, Intro to Statistics (Oct&ndash;Dec 2023): graded assignments and assisted instruction</li>
           </ul>
         </div>
         <div class="exp-panel" id="exp-ieee">
           <div class="exp-meta">
-            <span class="exp-date">Jun 2023 — Feb 2024</span>
+            <span class="exp-date">Jun 2023 &ndash; Feb 2024</span>
             <span class="exp-loc">Surabaya, Indonesia</span>
           </div>
-          <h3>Strategy &amp; Development Staff <span class="exp-at">@ IEEE ITS Student Branch</span></h3>
+          <h3>Strategy &amp; Development Staff <span class="exp-at">at IEEE ITS Student Branch</span></h3>
           <ul>
             <li>Principal editor for marketing and archival content on the Documentation and Editorial Team</li>
             <li>Completed 5+ major editorial and documentation projects</li>
@@ -302,13 +384,13 @@
         </div>
         <div class="exp-panel" id="exp-geo">
           <div class="exp-meta">
-            <span class="exp-date">Dec 2023 — Feb 2024</span>
+            <span class="exp-date">Dec 2023 &ndash; Feb 2024</span>
             <span class="exp-loc">Surabaya, Indonesia</span>
           </div>
-          <h3>Student Staff Volunteer <span class="exp-at">@ Global Engagement Office, ITS</span></h3>
+          <h3>Student Staff Volunteer <span class="exp-at">at Global Engagement Office, ITS</span></h3>
           <ul>
             <li>Liaised for 100+ international students across 10+ major events</li>
-            <li>Rotated through speaker, MC, logistics coordinator, and campus guide roles</li>
+            <li>Rotated through speaker, MC, logistics coordinator and campus guide roles</li>
           </ul>
         </div>
       </div>
@@ -320,8 +402,8 @@
         <div class="edu-card reveal">
           <div class="edu-degree">B.Sc. Information Systems (S.Kom.)</div>
           <div class="edu-school">Institut Teknologi Sepuluh Nopember (ITS)</div>
-          <div class="edu-meta">Aug 2022 — Oct 2026 &nbsp;&middot;&nbsp; Surabaya &nbsp;&middot;&nbsp; GPA 3.56 / 4.00, Sangat Memuaskan</div>
-          <p class="edu-note">Thesis: Hierarchical Cluster Analysis of Medical Student Performance Across Multiple Assessment Modalities — Ward's linkage, k=3, Silhouette 0.3913, CH 61.70</p>
+          <div class="edu-meta">Aug 2022 &ndash; 11 Oct 2026, Surabaya. GPA 3.56 / 4.00, Sangat Memuaskan</div>
+          <p class="edu-note">Thesis: Hierarchical Cluster Analysis of Medical Student Performance Across Multiple Assessment Modalities. Ward's linkage, k = 3, Silhouette 0.3913, Calinski-Harabasz 61.70.</p>
           <div class="edu-awards">
             <span>Runner-up FTEIC 2022 Business Plan</span>
             <span>Semi-Finalist UGM BCC 2023</span>
@@ -329,106 +411,170 @@
           </div>
         </div>
         <div class="edu-card reveal">
-          <div class="edu-degree">Exchange — Computer Science</div>
+          <div class="edu-degree">Exchange, Computer Science</div>
           <div class="edu-school">National Taiwan University of Science and Technology (NTUST)</div>
-          <div class="edu-meta">Aug 2025 — Jan 2026 &nbsp;&middot;&nbsp; Taipei</div>
-          <p class="edu-note">Competitively selected institutional exchange. Coursework and projects in machine learning, fuzzy logic control, and network protocol simulation.</p>
-          <p class="edu-footnote">Earlier: Lazuardi High School, Natural Sciences track — graduated with an 89.03 average, 7th in cohort.</p>
+          <div class="edu-meta">Aug 2025 &ndash; Jan 2026, Taipei</div>
+          <p class="edu-note">Competitively selected institutional exchange. Coursework and projects in machine learning, fuzzy logic control and network protocol simulation.</p>
+          <p class="edu-footnote">Earlier: Lazuardi High School, Natural Sciences track. Graduated with an 89.03 average, 7th in cohort.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ==================== PROJECTS ==================== -->
 <section id="projects" class="section">
   <div class="container">
     <div class="section-header">
-      <span class="section-index">&sect; 03</span>
       <h2>Projects</h2>
     </div>
+
+    <div class="filter-bar" role="group" aria-label="Filter projects">
+      <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter-btn" data-filter="gov" aria-pressed="false">Governance &amp; web</button>
+      <button class="filter-btn" data-filter="ai" aria-pressed="false">AI &amp; data</button>
+      <button class="filter-btn" data-filter="sys" aria-pressed="false">Systems &amp; design</button>
+    </div>
+
     <div class="projects-grid">
-      <div class="proj-card reveal" data-category="security">
+      <div class="proj-card proj-featured reveal" data-group="gov">
+        <div class="proj-top">
+          <span class="proj-cat">Full-Stack Web</span>
+          <span class="proj-year">Private repository</span>
+        </div>
+        <h3>Toko: Business Operating System</h3>
+        <p>A digital twin of a business. Toko lets entrepreneurs, consultants and owners generate, design, simulate, optimise, document and present an entire operation from one platform. Blueprint, Workflow, Staffing, SOPs, Analytics and Presentation are all views of the same underlying business model, so a change in one is reflected everywhere.</p>
+        <div class="proj-tech">
+          <code>React</code><code>Vite</code><code>TailwindCSS</code><code>Zustand</code><code>React Konva</code><code>React Flow</code><code>Node.js</code><code>Express</code><code>Prisma</code><code>Clerk</code><code>PostgreSQL</code><code>Supabase</code>
+        </div>
+        <div class="proj-stats">
+          <div><span>6</span><small>Linked views</small></div>
+          <div><span>1</span><small>Shared business model</small></div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" data-group="gov">
         <div class="proj-top">
           <span class="proj-cat">IT Governance</span>
           <span class="proj-year">2026</span>
         </div>
         <h3>Cybersecurity Finding &amp; Remediation Tracker</h3>
-        <p>Laravel platform that logs audit and pentest findings and tracks remediation against SLAs, built for PT. PAL's Cybersecurity &amp; Governance team alongside four sibling platforms — a risk register, a service dependency map, a lessons-learned knowledge base, and a friction reporter.</p>
+        <p>Laravel platform that logs audit and pentest findings and tracks remediation against SLAs. Built for PT. PAL's Cybersecurity &amp; Governance team alongside four sibling platforms: a risk register, a service dependency map, a lessons-learned knowledge base and a friction reporter.</p>
         <div class="proj-tech">
           <code>Laravel</code><code>RBAC</code><code>Audit Logging</code><code>COBIT 2019</code>
         </div>
         <div class="proj-stats">
-          <div><span>5</span><small>Platforms Shipped</small></div>
-          <div><span>SLA</span><small>Remediation Tracking</small></div>
+          <div><span>5</span><small>Platforms built</small></div>
+          <div><span>SLA</span><small>Remediation tracking</small></div>
         </div>
       </div>
 
-      <div class="proj-card reveal" data-category="ml">
+      <div class="proj-card reveal" data-group="gov">
+        <div class="proj-top">
+          <span class="proj-cat">Full-Stack</span>
+          <span class="proj-year">2026</span>
+        </div>
+        <h3>Team Productivity Dashboard</h3>
+        <p>Kanban board with a Google Calendar style scheduling view that sends WhatsApp reminders for upcoming tasks and deadlines, powered by a lightweight AI stack. Led end to end, including domain and hosting setup on the company's cPanel, release and ongoing maintenance.</p>
+        <div class="proj-tech">
+          <code>Node.js</code><code>Kanban</code><code>WhatsApp Alerts</code><code>cPanel</code>
+        </div>
+        <div class="proj-stats">
+          <div><span>Live</span><small>Self-deployed</small></div>
+          <div><span>Auto</span><small>Deadline reminders</small></div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" data-group="ai" data-pdf="assets\F11415009_Project Proposal.pdf" data-title="Particle Swarm Optimized Neural Networks for Real-Time Air Quality Forecasting in Taipei">
         <div class="proj-top">
           <span class="proj-cat">Machine Learning</span>
           <span class="proj-year">2025</span>
         </div>
         <h3>Air Quality Forecasting Neural Network</h3>
-        <p>PSO-optimised neural network trained on 100,000+ Taipei urban sensor samples for real-time PM2.5 and AQI prediction, with hyperparameters searched via particle swarm optimisation instead of grid search.</p>
+        <p>PM2.5 forecasting for Taipei's 12 EPA monitoring stations, built for the Machine Learning course at NTUST. Particle swarm optimisation searches network depth, layer width, learning rate, dropout and feature subset at the same time, scoring each candidate on validation error plus a compute-cost penalty instead of running a grid search. Inputs combine EPA sensor readings, Central Weather Administration data and traffic counts into 87 engineered features. The proposal targets roughly 20% lower MAE than a baseline network, with inference under 100 ms.</p>
         <div class="proj-tech">
           <code>Python</code><code>TensorFlow</code><code>PSO</code><code>NumPy</code>
         </div>
         <div class="proj-stats">
-          <div><span>100K+</span><small>Training Samples</small></div>
-          <div><span>PM2.5</span><small>Target Metric</small></div>
+          <div><span>100K+</span><small>Training samples</small></div>
+          <div><span>87</span><small>Engineered features</small></div>
         </div>
+        <button class="read-btn" type="button" hidden>Read the proposal</button>
       </div>
 
-      <div class="proj-card reveal" data-category="data">
+      <div class="proj-card reveal" data-group="ai">
         <div class="proj-top">
-            <span class="proj-cat">Data Engineering</span>
-            <span class="proj-year">2025</span>
+          <span class="proj-cat">Data Engineering</span>
+          <span class="proj-year">2025</span>
         </div>
-        <h3>Dadok — Dataset Doktor</h3>
-        <p>Automated data-health diagnostic tool. Upload a CSV, XLSX, or JSON dataset and get a health report back: missing-value analysis, type inference, categorical normalisation, and a one-click repaired file.</p>
+        <h3>Dadok (Dataset Doktor)</h3>
+        <p>Automated data-health diagnostic tool. Upload a CSV, XLSX or JSON dataset and get a health report back: missing-value analysis, type inference, categorical normalisation and a one-click repaired file.</p>
         <div class="proj-tech">
-            <code>React</code><code>Vite</code><code>TailwindCSS</code><code>FastAPI</code><code>Pandas</code><code>Supabase</code>
+          <code>React</code><code>Vite</code><code>TailwindCSS</code><code>FastAPI</code><code>Pandas</code><code>Supabase</code>
         </div>
         <div class="proj-stats">
-            <div><span>1M</span><small>Row Limit</small></div>
-            <div><span>WIP</span><small>Status</small></div>
+          <div><span>1M</span><small>Row limit</small></div>
+          <div><span>WIP</span><small>Status</small></div>
         </div>
       </div>
 
-      <div class="proj-card reveal" data-category="cv">
+      <div class="proj-card reveal" data-group="ai">
         <div class="proj-top">
-          <span class="proj-cat">Computer Vision</span>
+          <span class="proj-cat">Computer Vision + Embedded</span>
           <span class="proj-year">2026</span>
         </div>
-        <h3>Drone Pipeline Inspection with YOLOv12n</h3>
-        <p>Cross-departmental research with Marine Engineering, ITS. YOLOv12n plus GPS geotagging for real-time corrosion and third-party-damage detection on oil, gas, and maritime pipelines, aimed at predictive maintenance.</p>
+        <h3>Drone Pipeline Inspection: YOLOv12n and KAGE TECH HMI</h3>
+        <p>Cross-departmental research with Marine Engineering, ITS. YOLOv12n and GPS geotagging detect corrosion and third-party damage on oil, gas and maritime pipelines for predictive maintenance. KAGE TECH is the browser HMI for the system: a live camera feed with detection overlays, a Leaflet map of geotagged defects and a detection log, fed by a Node.js relay that bridges the drone's onboard Raspberry Pi over WebSocket.</p>
         <div class="proj-tech">
-          <code>YOLOv12n</code><code>TensorFlow</code><code>GPS Geotagging</code><code>Python</code>
+          <code>YOLOv12n</code><code>TensorFlow</code><code>Raspberry Pi</code><code>Node.js</code><code>WebSocket</code><code>Leaflet</code>
         </div>
         <div class="proj-stats">
-          <div><span>GPS</span><small>Spatial Mapping</small></div>
-          <div><span>2026</span><small>Research Paper</small></div>
+          <div><span>Live</span><small>Video + detections</small></div>
+          <div><span>GPS</span><small>Geotagged defects</small></div>
         </div>
+        <a class="proj-link" href="https://github.com/gegeisgege/YOLO-RustDetectorDrone1-WEB" target="_blank" rel="noopener">View KAGE TECH on GitHub</a>
       </div>
 
-      <div class="proj-card reveal" data-category="control">
+      <div class="proj-card reveal" data-group="sys" data-pdf="assets\Fuzzy_Logic_Control_for_Dynamic_Target_Tracking_in_Two_Axis_Autonomous_Aiming_Systems__1_.pdf" data-title="Fuzzy Logic Control for Dynamic Target Tracking in Two-Axis Autonomous Aiming Systems">
         <div class="proj-top">
           <span class="proj-cat">Control Systems</span>
           <span class="proj-year">2025</span>
         </div>
         <h3>Fuzzy Logic Dual-Axis Targeting System</h3>
-        <p>Fuzzy logic controller for autonomous real-time dual-axis target tracking, designed and validated inside CoppeliaSim and MATLAB simulation environments.</p>
+        <p>Hybrid tracker for a two-axis turret. A custom YOLO detector (5,000 augmented images, 95% mAP) feeds a zero-order Sugeno fuzzy controller that turns pixel error and target size into bounded velocity commands, with no plant model. In noisy Monte Carlo runs it converged in 3.0 s against 4.8 s for an inverse-kinematics controller and 16.6 s for PID, and on the physical turret its RMS error was 2.92&deg; against 4.26&deg; for PID. Co-authored with Juli&aacute;n Hern&aacute;ndez Al&aacute;s.</p>
         <div class="proj-tech">
-          <code>MATLAB</code><code>CoppeliaSim</code><code>Fuzzy Logic</code>
+          <code>Sugeno Fuzzy</code><code>YOLO</code><code>MATLAB</code><code>CoppeliaSim</code><code>Python</code>
         </div>
+        <div class="proj-stats">
+          <div><span>245</span><small>Fuzzy rules</small></div>
+          <div><span>2.92&deg;</span><small>RMS error, vs 4.26&deg; PID</small></div>
+        </div>
+        <button class="read-btn" type="button" hidden>Read the manuscript</button>
       </div>
 
-      <div class="proj-card reveal" data-category="ux">
+      <div class="proj-card reveal" data-group="sys" data-pdf="assets\ICN_FINALproj.pdf" data-title="Email Communication Simulation System: SMTP-Based Socket Programming">
+        <div class="proj-top">
+          <span class="proj-cat">Networks</span>
+          <span class="proj-year">2025</span>
+        </div>
+        <h3>Email Communication Simulation</h3>
+        <p>Python socket implementation of an SMTP mail system for the Intro to Computer Networks course at NTUST, built by a team of five. It has a multi-threaded server with an explicit protocol state machine, AUTH PLAIN, ESMTP extensions, a persistent priority queue with exponential-backoff retries, rate limiting and full logging. I built the server core, state machine, protocol compliance and file operations.</p>
+        <div class="proj-tech">
+          <code>Python</code><code>Sockets</code><code>SMTP</code><code>AUTH PLAIN</code><code>Multithreading</code>
+        </div>
+        <div class="proj-stats">
+          <div><span>500</span><small>Concurrent connections</small></div>
+          <div><span>~50/s</span><small>Messages processed</small></div>
+        </div>
+        <button class="read-btn" type="button" hidden>Read the report</button>
+      </div>
+
+      <div class="proj-card reveal" data-group="sys">
         <div class="proj-top">
           <span class="proj-cat">UI/UX + ML</span>
           <span class="proj-year">2024</span>
         </div>
-        <h3>CLASTIC — AI Plastic Waste Sorter</h3>
+        <h3>CLASTIC: AI Plastic Waste Sorter</h3>
         <p>End-to-end UI/UX for an AI-powered plastic waste sorting mobile app deployed in rural Indonesia, with ML-based classification and real field usability testing in Sumberbening Village.</p>
         <div class="proj-tech">
           <code>Figma</code><code>ML Classification</code><code>Mobile</code>
@@ -438,49 +584,159 @@
   </div>
 </section>
 
+<!-- ==================== RESEARCH ==================== -->
 <section id="research" class="section section-alt">
   <div class="container">
     <div class="section-header">
-      <span class="section-index">&sect; 04</span>
       <h2>Research</h2>
     </div>
     <div class="research-list">
-      <div class="research-card reveal">
+
+      <div class="research-card reveal" data-pdf="assets/5026221050_UD_GERALD MAHAPRANAJA_2.pdf" data-title="Hierarchical Cluster Analysis of Medical Student Performance">
         <div class="research-meta">
           <span class="research-venue">Undergraduate Thesis, ITS</span>
           <span class="research-year">2026</span>
         </div>
         <h3>Hierarchical Cluster Analysis of Medical Student Performance Across Multiple Assessment Modalities</h3>
         <p class="research-authors">Gerald Mahapranaja Pillian &amp; Ahmad Muklason, S.Kom., M.Sc., Ph.D.</p>
-        <p>Applied Ward's linkage hierarchical clustering (Euclidean distance, Z-score standardised) to 98 medical students at FKK ITS across written, practical, standardised-patient, and problem-based assessments. Found three statistically distinct clusters — At-Risk (26.5%), Mixed Performance (9.2%), Average (64.3%) — validated with one-way ANOVA (p &lt; 0.001), Silhouette, Calinski-Harabasz, and Davies-Bouldin indices, intended to support early identification of at-risk students.</p>
+        <p>Applied Ward's linkage hierarchical clustering (Euclidean distance, Z-score standardised) to 98 medical students at FKK ITS across written, practical, standardised-patient and problem-based assessments. Found three statistically distinct clusters, validated with one-way ANOVA (p &lt; 0.001), Silhouette, Calinski-Harabasz and Davies-Bouldin indices, intended to support early identification of at-risk students.</p>
+
+        <div class="cluster-viz" role="img" aria-label="Cluster sizes across 98 students: At-risk 26.5 percent, Mixed performance 9.2 percent, Average 64.3 percent">
+          <div class="cv-bar">
+            <span class="cv-seg cv-risk" style="--w:26.5%"></span>
+            <span class="cv-seg cv-mixed" style="--w:9.2%"></span>
+            <span class="cv-seg cv-avg" style="--w:64.3%"></span>
+          </div>
+          <ul class="cv-legend">
+            <li><i class="cv-dot cv-risk"></i>At-risk <b>26.5%</b> <small>26 of 98</small></li>
+            <li><i class="cv-dot cv-mixed"></i>Mixed performance <b>9.2%</b> <small>9 of 98</small></li>
+            <li><i class="cv-dot cv-avg"></i>Average <b>64.3%</b> <small>63 of 98</small></li>
+          </ul>
+          <dl class="cv-metrics">
+            <div><dt>Linkage</dt><dd>Ward, k = 3</dd></div>
+            <div><dt>Silhouette</dt><dd>0.3913</dd></div>
+            <div><dt>Calinski-Harabasz</dt><dd>61.70</dd></div>
+            <div><dt>ANOVA</dt><dd>p &lt; 0.001</dd></div>
+          </dl>
+        </div>
+
         <div class="research-tags">
           <span>Educational Data Mining</span><span>Hierarchical Clustering</span><span>Ward's Linkage</span><span>Medical Education</span>
         </div>
+        <div class="research-actions">
+          <button class="read-btn" type="button" hidden>Read the paper</button>
+        </div>
       </div>
 
-      <div class="research-card reveal">
+      <div class="research-card reveal" data-pdf="assets/research/drone-pipeline-inspection.pdf" data-title="Drone Pipeline Visual Based Inspection Using YOLOv12n">
         <div class="research-meta">
-          <span class="research-venue">Research Paper, cross-departmental with Marine Engineering</span>
+          <span class="research-venue">Research paper, with Marine Engineering</span>
           <span class="research-year">2026</span>
         </div>
         <h3>Implementation of Drone for Pipeline Visual Based Inspection Using YOLOv12n with GPS Based Localization</h3>
-        <p>A drone-assisted visual inspection framework combining YOLOv12n and TensorFlow for real-time detection of corrosion and third-party damage on pipelines, with GPS-based geotagging for spatial defect mapping and predictive maintenance.</p>
+        <p>A drone-assisted visual inspection framework combining YOLOv12n and TensorFlow for real-time detection of corrosion and third-party damage on pipelines, with GPS-based geotagging for spatial defect mapping and predictive maintenance. The KAGE TECH web HMI is the operator interface for the system.</p>
         <div class="research-tags">
           <span>Computer Vision</span><span>YOLOv12n</span><span>GPS Localisation</span><span>Predictive Maintenance</span>
         </div>
+        <div class="research-actions">
+          <button class="read-btn" type="button" hidden>Read the paper</button>
+        </div>
       </div>
 
-      <div class="research-card reveal">
+      <div class="research-card reveal" data-pdf="assets/Makalah_EtikaTIKelasC_0501710574.pdf" data-title="User Perceptions of Camera and Microphone Access in Mobile Apps">
         <div class="research-meta">
-          <span class="research-venue">ResearchGate</span>
+          <span class="research-venue">Etika Teknologi Informasi, ITS, and ResearchGate</span>
           <span class="research-year">2024</span>
         </div>
-        <h3>Understanding User Perceptions of Camera and Microphone Access in Mobile Applications</h3>
-        <p>Investigated user trust patterns and the security and privacy implications of app permission systems on mobile platforms — how people actually decide whether to grant camera or mic access, and what that reveals about trust in the app itself.</p>
+        <h3>Understanding User Perceptions of Camera and Microphone Access in Mobile Applications: Exploring Permission Granting and Associated Security and Privacy Risks</h3>
+        <p class="research-authors">Gerald Mahapranaja Pillian, Dimas Gistha Andyana, Muhammad Rafi Novyansyah &amp; Nur Aini Rakhmawati</p>
+        <p>A mixed-methods study of how well people understand the camera and microphone permissions they grant. A survey of 23 respondents measured knowledge, perceived risk and granting behaviour, while a technical analysis scored Google Play apps by how risky their permission requests look. Users showed little differentiated understanding of what permissions allow, and popular apps were not immune to high risk scores. The paper argues for clearer permission prompts, better privacy education and stricter regulation.</p>
+
+        <div class="cmp-viz formula-viz">
+          <div class="cmp-head"><span>How the app risk score works, from 0 to 100</span></div>
+          <div class="formula">
+            <code>permission risk = malware frequency / (benign frequency + 0.01) &times; 100</code>
+            <code>size anomaly = min(|z-score of app size| &times; 20, 100)</code>
+            <code>risk score = weighted sum of the two, capped at 100</code>
+          </div>
+          <dl class="cv-metrics">
+            <div><dt>Survey</dt><dd>23 respondents</dd></div>
+            <div><dt>Data</dt><dd>Google Play apps</dd></div>
+            <div><dt>Focus</dt><dd>Camera and mic</dd></div>
+            <div><dt>Dataset</dt><dd>Open on Zenodo</dd></div>
+          </dl>
+        </div>
+
         <div class="research-tags">
           <span>Mobile Security</span><span>Privacy</span><span>User Trust</span><span>HCI</span>
         </div>
-        <a href="https://www.researchgate.net/profile/Gerald-Pillian" target="_blank" rel="noopener" class="research-link">View on ResearchGate</a>
+        <div class="research-actions">
+          <button class="read-btn" type="button" hidden>Read the paper</button>
+          <a href="https://www.researchgate.net/publication/386448969_UNDERSTANDING_USER_PERCEPTIONS_OF_CAMERA_AND_MICROPHONE_ACCESS_IN_MOBILE_APPLICATIONS_EXPLORING_PERMISSION_GRANTING_AND_ASSOCIATED_SECURITY_AND_PRIVACY_RISKS" target="_blank" rel="noopener" class="research-link">View on ResearchGate</a>
+          <a href="https://doi.org/10.5281/zenodo.14238352" target="_blank" rel="noopener" class="research-link">Dataset on Zenodo</a>
+        </div>
+      </div>
+
+      <div class="research-card reveal" data-pdf="assets\Fuzzy_Logic_Control_for_Dynamic_Target_Tracking_in_Two_Axis_Autonomous_Aiming_Systems__1_.pdf" data-title="Fuzzy Logic Control for Dynamic Target Tracking in Two-Axis Autonomous Aiming Systems">
+        <div class="research-meta">
+          <span class="research-venue">Unpublished manuscript</span>
+          <span class="research-year">2025</span>
+        </div>
+        <h3>Fuzzy Logic Control for Dynamic Target Tracking in Two-Axis Autonomous Aiming Systems</h3>
+        <p class="research-authors">Gerald Mahapranaja Pillian &amp; Juli&aacute;n Hern&aacute;ndez Al&aacute;s</p>
+        <p>Combines a YOLO-based detector with a zero-order Sugeno fuzzy controller (7 &times; 7 &times; 5 = 245 rules) that works directly in the image plane and respects the turret's velocity limits. Compared against analytically tuned inverse-kinematics and PID controllers in Monte Carlo simulation with multiplicative noise and on a physical two-axis turret, the fuzzy controller converged faster and with lower steady-state error. The manuscript was not published, but the full text is available to read.</p>
+
+        <div class="cmp-viz" role="img" aria-label="Physical turret results, fuzzy controller versus inverse kinematics and PID: RMS error 2.92 versus 3.85 and 4.26 degrees, response time 0.67 versus 0.79 and 0.83 seconds, overshoot 8.4 versus 14.2 and 18.7 percent, steady-state oscillation 0.6 versus 1.0 and 1.4 degrees">
+          <div class="cmp-head">
+            <span>Physical turret experiments, lower is better</span>
+            <span class="cmp-legend"><span><i class="cmp-dot cmp-fuzzy"></i>Fuzzy (Sugeno)</span><span><i class="cmp-dot cmp-ik"></i>Inverse kinematics</span><span><i class="cmp-dot cmp-pid"></i>PID</span></span>
+          </div>
+          <div class="cmp-row">
+            <span class="cmp-label">Average RMS error</span>
+            <div class="cmp-bars">
+              <div class="cmp-bar"><span class="cmp-track"><i class="cmp-fill cmp-fuzzy" style="--w:68.5%"></i></span><b>2.92&deg;</b></div>
+              <div class="cmp-bar"><span class="cmp-track"><i class="cmp-fill cmp-ik" style="--w:90.4%"></i></span><b>3.85&deg;</b></div>
+              <div class="cmp-bar"><span class="cmp-track"><i class="cmp-fill cmp-pid" style="--w:100%"></i></span><b>4.26&deg;</b></div>
+            </div>
+          </div>
+          <div class="cmp-row">
+            <span class="cmp-label">Average response time</span>
+            <div class="cmp-bars">
+              <div class="cmp-bar"><span class="cmp-track"><i class="cmp-fill cmp-fuzzy" style="--w:80.7%"></i></span><b>0.67 s</b></div>
+              <div class="cmp-bar"><span class="cmp-track"><i class="cmp-fill cmp-ik" style="--w:95.2%"></i></span><b>0.79 s</b></div>
+              <div class="cmp-bar"><span class="cmp-track"><i class="cmp-fill cmp-pid" style="--w:100%"></i></span><b>0.83 s</b></div>
+            </div>
+          </div>
+          <div class="cmp-row">
+            <span class="cmp-label">Overshoot</span>
+            <div class="cmp-bars">
+              <div class="cmp-bar"><span class="cmp-track"><i class="cmp-fill cmp-fuzzy" style="--w:44.9%"></i></span><b>8.4%</b></div>
+              <div class="cmp-bar"><span class="cmp-track"><i class="cmp-fill cmp-ik" style="--w:75.9%"></i></span><b>14.2%</b></div>
+              <div class="cmp-bar"><span class="cmp-track"><i class="cmp-fill cmp-pid" style="--w:100%"></i></span><b>18.7%</b></div>
+            </div>
+          </div>
+          <div class="cmp-row">
+            <span class="cmp-label">Steady-state oscillation</span>
+            <div class="cmp-bars">
+              <div class="cmp-bar"><span class="cmp-track"><i class="cmp-fill cmp-fuzzy" style="--w:42.9%"></i></span><b>0.6&deg;</b></div>
+              <div class="cmp-bar"><span class="cmp-track"><i class="cmp-fill cmp-ik" style="--w:71.4%"></i></span><b>1.0&deg;</b></div>
+              <div class="cmp-bar"><span class="cmp-track"><i class="cmp-fill cmp-pid" style="--w:100%"></i></span><b>1.4&deg;</b></div>
+            </div>
+          </div>
+          <dl class="cv-metrics">
+            <div><dt>Fuzzy rules</dt><dd>245</dd></div>
+            <div><dt>Detector mAP</dt><dd>95.0%</dd></div>
+            <div><dt>Control loop</dt><dd>12.5 Hz</dd></div>
+            <div><dt>Monte Carlo convergence</dt><dd>3.02 s</dd></div>
+          </dl>
+        </div>
+
+        <div class="research-tags">
+          <span>Fuzzy Logic</span><span>Object Detection</span><span>Target Tracking</span><span>Control Systems</span>
+        </div>
+        <div class="research-actions">
+          <button class="read-btn" type="button" hidden>Read the manuscript</button>
+        </div>
       </div>
     </div>
 
@@ -489,46 +745,48 @@
       <div class="certs-row">
         <div class="cert-card reveal">
           <div class="cert-name">SAP Certified Application Associate</div>
-          <div class="cert-meta">SAP BusinessObjects BI Platform 4.2 &nbsp;&middot;&nbsp; Jul 2024</div>
-          <p>3-month ERP programme covering SD, MM, and PP modules via SAP University Alliances.</p>
+          <div class="cert-meta">SAP BusinessObjects BI Platform 4.2, Jul 2024</div>
+          <p>3-month ERP programme covering SD, MM and PP modules via SAP University Alliances.</p>
         </div>
         <div class="cert-card reveal">
           <div class="cert-name">Cisco DevNet Associate</div>
-          <div class="cert-meta">Cisco Networking Academy &nbsp;&middot;&nbsp; Jul 2025</div>
-          <p>SDN fundamentals, network automation, and REST API-based infrastructure programmability.</p>
+          <div class="cert-meta">Cisco Networking Academy, Jul 2025</div>
+          <p>SDN fundamentals, network automation and REST API-based infrastructure programmability.</p>
         </div>
         <div class="cert-card reveal">
           <div class="cert-name">Data Analyst Certification</div>
-          <div class="cert-meta">MySkill Online &nbsp;&middot;&nbsp; Aug — Oct 2023</div>
-          <p>Hands-on training in SQL, Python, and DBMS with a guided capstone data analysis project.</p>
+          <div class="cert-meta">MySkill Online, Aug&ndash;Oct 2023</div>
+          <p>Hands-on training in SQL, Python and DBMS with a guided capstone data analysis project.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ==================== CONTACT ==================== -->
 <section id="contact" class="section">
   <div class="container">
     <div class="section-header">
-      <span class="section-index">&sect; 05</span>
       <h2>Contact</h2>
     </div>
     <div class="contact-layout">
       <div class="contact-text">
-        <p class="contact-lead">Open to research collaborations, full-time analyst or data roles, and projects that need someone comfortable moving between governance, data, and design.</p>
+        <p class="contact-lead">I'm looking for a full-time role in IT governance, data analytics or secure software development, and I'm always up for research collaborations.</p>
         <p>Based in Surabaya, Indonesia. Open to relocation.</p>
       </div>
       <div class="contact-links">
-        <a href="mailto:gerald.pranaja@gmail.com" class="contact-row">
-          <span class="contact-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </span>
-          <span class="contact-detail">
-            <span class="contact-label">Email</span>
-            <span class="contact-value">gerald.pranaja@gmail.com</span>
-          </span>
-          <span class="contact-arrow">&#8599;</span>
-        </a>
+        <div class="contact-row contact-split">
+          <a href="mailto:gerald.pranaja@gmail.com" class="contact-main">
+            <span class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </span>
+            <span class="contact-detail">
+              <span class="contact-label">Email</span>
+              <span class="contact-value">gerald.pranaja@gmail.com</span>
+            </span>
+          </a>
+          <button class="copy-btn" type="button" data-copy="gerald.pranaja@gmail.com">Copy</button>
+        </div>
         <a href="tel:+6282142212761" class="contact-row">
           <span class="contact-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -565,7 +823,7 @@
           </span>
           <span class="contact-detail">
             <span class="contact-label">Location</span>
-            <span class="contact-value">Surabaya, Indonesia &mdash; open to relocation</span>
+            <span class="contact-value">Surabaya, Indonesia, open to relocation</span>
           </span>
         </div>
       </div>
@@ -573,12 +831,43 @@
   </div>
 </section>
 
+</main>
+
 <footer id="footer">
   <div class="footer-inner">
-    <span class="footer-name">Gerald Mahapranaja Pillian</span>
-    <span class="footer-copy">&copy; 2026</span>
+    <span class="footer-name">&copy; 2026 Gerald Mahapranaja Pillian</span>
+    <span class="footer-note">Hand-written HTML, CSS and JavaScript. Click a wandering cat; every fifth click brings another.</span>
+    <a href="#home" class="footer-top">Back to top</a>
   </div>
 </footer>
+
+<!-- ==================== PAPER DRAWER ==================== -->
+<aside id="paperDrawer" class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+  <div class="drawer-scrim" data-close></div>
+  <div class="drawer-panel">
+    <header class="drawer-head">
+      <h3 id="drawerTitle">Paper</h3>
+      <div class="drawer-actions">
+        <a id="drawerOpen" href="#" target="_blank" rel="noopener">Open in new tab</a>
+        <a id="drawerDl" href="#" download>Download</a>
+        <button id="drawerClose" type="button" aria-label="Close paper viewer">Close</button>
+      </div>
+    </header>
+    <iframe id="drawerFrame" title="Paper preview"></iframe>
+  </div>
+</aside>
+
+<!-- ==================== QUICK NAV ==================== -->
+<div id="palette" class="palette" hidden>
+  <div class="palette-scrim" data-close></div>
+  <div class="palette-box" role="dialog" aria-modal="true" aria-label="Quick navigation">
+    <input id="paletteInput" type="text" placeholder="Jump to a section or run an action" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="paletteList">
+    <ul id="paletteList" role="listbox"></ul>
+    <p class="palette-foot">Arrow keys to move, Enter to select, Esc to close</p>
+  </div>
+</div>
+
+<div id="toast" role="status" aria-live="polite"></div>
 
 <script src="script.js"></script>
 </body>
